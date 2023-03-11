@@ -3,6 +3,11 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 
 -----------------
 
+Update 1.01: 2023-03-11
+
+New file added: FullName.h.  Updated files: MaleName.h, MaleName.cpp and TownGuard.h.
+
+
 Initial commit: 2023-03-10
 
 The initial commit for the C++ OSR Town Guard Generator.
