@@ -3,6 +3,12 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 
 -----------------
 
+
+Update 1.02: 2023-03-12
+
+Updates to main.cpp, FemaleName.h, FemaleName.cpp, FullName.h, Surname.h and Surname.cpp.
+
+
 Update 1.01: 2023-03-11
 
 New file added: FullName.h.  Updated files: MaleName.h, MaleName.cpp and TownGuard.h.
