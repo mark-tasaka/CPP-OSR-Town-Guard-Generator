@@ -1,5 +1,10 @@
 #include<iostream>
 #include<string>
+#include<cstdlib>
+#include<ctime>
+#include<memory>
+
+#include"FullName.h"
 
 using namespace std;
 
@@ -12,6 +17,32 @@ The Town Guard Generator is a C++ project designed to generate a company of town
 
 int main()
 {
+
+
+	srand(time(0));
+	//unique_ptr<FullName> test = make_unique<FullName>();
+	bool isMale;
+
+
+	for (int i = 0; i < 10; i++)
+	{
+
+		int sexSelect = rand() % 10;
+
+		if (sexSelect < 5)
+		{
+			isMale = true;
+		}
+		else
+		{
+			isMale = false;
+		}
+
+		unique_ptr<FullName> test = make_unique<FullName>(isMale);
+
+		cout << "First Name: " << test->getFirstName() << " Last Name: " << test->getSurname() << " Sex: " << test->getSex() << endl << endl;
+
+	}
 
 	return 0;
 }

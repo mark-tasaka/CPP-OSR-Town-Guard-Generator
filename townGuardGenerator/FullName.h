@@ -4,6 +4,7 @@
 #include<string>
 #include<cstdlib>
 #include<ctime>
+#include<memory>
 #include "FemaleName.h"
 #include "MaleName.h"
 #include "Surname.h"
@@ -24,20 +25,55 @@ public:
 
 		if (isMale == true)
 		{
-			MaleName* maleName = new MaleName();
+			//MaleName* maleName = new MaleName();
+			//Unique pointer, better memory management
+			unique_ptr<MaleName> maleName = make_unique<MaleName>();
 			firstName = maleName->getFirstName(nameSelect);
 		}
 		else
 		{
-
+			//Unique pointer, better memory management
+			unique_ptr<FemaleName> femaleName = make_unique<FemaleName>();
+			firstName = femaleName->getFirstName(nameSelect);
 		}
 
+		this->firstName = firstName;
+
+		return firstName;
+	}
+
+	string getSurname() 
+	{
+		srand(time(0));
+		int nameSelect = rand() % 38 + 1;
+
+		unique_ptr<Surname> lastName = make_unique<Surname>();
+		surname = lastName->getSurnames(nameSelect);
+
+		this->surname = surname;
+
+		return surname;
+	}
+
+	string getSex()
+	{
+		if (isMale == true)
+		{
+			this->sex = "Male";
+		}
+		else
+		{
+			this->sex = "Female";
+		}
+
+		return sex;
 	}
 
 private:
 	bool isMale;
 	string firstName;
 	string surname;
+	string sex;
 };
 
 #endif // !FULL_NAME_H
