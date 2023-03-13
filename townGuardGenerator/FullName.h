@@ -13,6 +13,7 @@ using namespace std;
 class FullName
 {
 public:
+
 	FullName(bool isMale)
 	{
 		this->isMale = isMale;
@@ -20,7 +21,8 @@ public:
 
 	string getFirstName()
 	{
-		srand(time(0));
+		//srand(time(0));
+		srand(static_cast<unsigned int>(std::time(nullptr)));
 		int nameSelect = rand() % 50 + 1;
 
 		if (isMale == true)
@@ -44,15 +46,24 @@ public:
 
 	string getSurname() 
 	{
-		srand(time(0));
+		//srand(time(0));
+		srand(static_cast<unsigned int>(std::time(nullptr)));
 		int nameSelect = rand() % 38 + 1;
 
-		unique_ptr<Surname> lastName = make_unique<Surname>();
-		surname = lastName->getSurnames(nameSelect);
+		//unique_ptr<Surname> lastName = make_unique<Surname>();
+		//surname = lastName->getSurnames(nameSelect);
 
-		this->surname = surname;
+		Surname* theSurname = new Surname();
+		this->surname = theSurname->getSurnames(nameSelect);
+
+		//this->surname = surname;
 
 		return surname;
+	}
+
+	void setSex(bool isMale)
+	{
+		this->isMale = isMale;
 	}
 
 	string getSex()
