@@ -4,6 +4,11 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 -----------------
 
 
+Update 1.03: 2023-03-13
+
+Impletemented a series of test in main.cpp to test the random generation of town guard names.
+
+
 Update 1.02: 2023-03-12
 
 Updates to main.cpp, FemaleName.h, FemaleName.cpp, FullName.h, Surname.h and Surname.cpp.
