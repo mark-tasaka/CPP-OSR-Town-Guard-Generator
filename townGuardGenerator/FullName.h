@@ -50,11 +50,11 @@ public:
 		srand(static_cast<unsigned int>(std::time(nullptr)));
 		int nameSelect = rand() % 38 + 1;
 
-		//unique_ptr<Surname> lastName = make_unique<Surname>();
-		//surname = lastName->getSurnames(nameSelect);
+		unique_ptr<Surname> lastName = make_unique<Surname>();
+		surname = lastName->getSurnames(nameSelect);
 
-		Surname* theSurname = new Surname();
-		this->surname = theSurname->getSurnames(nameSelect);
+		//Surname* theSurname = new Surname();
+		//this->surname = theSurname->getSurnames(nameSelect);
 
 		//this->surname = surname;
 
