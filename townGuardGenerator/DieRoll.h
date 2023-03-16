@@ -2,8 +2,6 @@
 #define DIE_ROLL_H
 #include<iostream>
 #include<string>
-#include<cstdlib>
-#include<ctime>
 #include<memory>
 #include<array>
 using namespace std;

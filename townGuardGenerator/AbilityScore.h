@@ -12,17 +12,6 @@ using namespace std;
 class AbilityScore
 {
 public:
-	//AbilityScore()
-	//{
-	//	DieRoll score = DieRoll();
-	//	array<int, 6> abilityScores = score.generateAbilityScores();
-	//	strength = abilityScores[0];
-	//	constition = abilityScores[1];
-	//	dexterity = abilityScores[2];
-	//	intelligence = abilityScores[3];
-	//	wisdom = abilityScores[4];
-	//	charisma = abilityScores[5];
-	//}
 	AbilityScore(array<int, 6> abilityScores)
 	{
 		this->strength = abilityScores[0];

@@ -2,9 +2,6 @@
 #define FULL_NAME_H
 #include<iostream>
 #include<string>
-#include<cstdlib>
-#include<ctime>
-#include<memory>
 #include "FemaleName.h"
 #include "MaleName.h"
 #include "Surname.h"

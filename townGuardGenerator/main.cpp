@@ -21,14 +21,8 @@ int main()
 {
 
 	srand(time(0));
-	//srand(static_cast<unsigned int>(time(nullptr)));
 
-	//unique_ptr<DieRoll> dieRollTest1 = make_unique<DieRoll>();
-	//array<int, 6> abilityScores1 = dieRollTest1->generateAbilityScores();
-	//unique_ptr<AbilityScore> scoresTest1 = make_unique<AbilityScore>(abilityScores1);
-
-	//cout << "Strength: " << scoresTest1->getStrength() << ", Constitution: " << scoresTest1->getConstitution() << ", Dexterity: " << scoresTest1->getDexterity() << ", Intelligence: " << scoresTest1->getIntelligence() << ", Wisdom: " << scoresTest1->getWisdom() << ", Charisma: " << scoresTest1->getCharisma() << endl << endl;
-
+	//Testing
 	for (int i = 0; i < 5; i++)
 	{
 		//srand(static_cast<unsigned int>(time(nullptr)));
@@ -40,23 +34,6 @@ int main()
 
 	}
 
-
-	//bool isMale2 = true;
-
-	//unique_ptr<FullName> test01 = make_unique<FullName>(isMale2);
-	//cout << "First Name: " << test01->getFirstName() << " Last Name: " << test01->getSurname() << " Sex: " << test01->getSex() << endl << endl;
-
-	//bool isMale3 = false;
-	//unique_ptr<FullName> test02 = make_unique<FullName>(isMale3);
-	//cout << "First Name: " << test02->getFirstName() << " Last Name: " << test02->getSurname() << " Sex: " << test02->getSex() << endl << endl;
-
-
-	//bool isMale4 = true;
-	//unique_ptr<FullName> test03 = make_unique<FullName>(isMale4);
-	//cout << "First Name: " << test03->getFirstName() << " Last Name: " << test03->getSurname() << " Sex: " << test03->getSex() << endl << endl;
-
-
-	//unique_ptr<FullName> test = make_unique<FullName>();
 	bool isMale;
 	int sexSelect;
 	int nameCounter = 0;
@@ -76,20 +53,8 @@ int main()
 			isMale = false;
 		}
 
-		//unique_ptr<FullName> test = make_unique<FullName>(isMale);
-
-		//cout << "First Name: " << test->getFirstName() << " Last Name: " << test->getSurname() << " Sex: " << test->getSex() << endl << endl;
-
-		//nameCounter++;
-
-		//string nameCounterString = to_string(nameCounter);
-
-		//string objectNameTest = "test" + nameCounter;
 
 		unique_ptr<FullName> test2 = make_unique<FullName>(sexSelect);
-
-		//test2->setSex(isMale);
-
 
 		cout << "First Name: " << test2->getFirstName() << " Last Name: " << test2->getSurname() << " Sex: " << test2->getSex() << endl << endl;
 
