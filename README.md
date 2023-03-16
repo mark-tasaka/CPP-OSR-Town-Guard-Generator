@@ -4,6 +4,11 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 -----------------
 
 
+Update 1.05: 2023-03-15
+
+Corrected the issues with random generation by correcting the errors with 'seeding' the rand() with 'time'.
+
+
 Update 1.04: 2023-03-14
 
 Add new file DieRoll.h, and test ability score generation in main.cpp.
