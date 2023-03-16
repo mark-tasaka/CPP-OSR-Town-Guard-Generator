@@ -13,7 +13,7 @@ class DieRoll
 public:
 	array<int, 6> generateAbilityScores()
 	{
-		srand(static_cast<unsigned int>(std::time(nullptr)));
+		//srand(static_cast<unsigned int>(std::time(nullptr)));
 
 		for (int i = 0; i < 6; i++)
 		{

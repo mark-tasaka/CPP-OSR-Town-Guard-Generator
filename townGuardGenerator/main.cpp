@@ -20,8 +20,8 @@ The Town Guard Generator is a C++ project designed to generate a company of town
 int main()
 {
 
-	//srand(time(0));
-	srand(static_cast<unsigned int>(std::time(nullptr)));
+	srand(time(0));
+	//srand(static_cast<unsigned int>(time(nullptr)));
 
 	//unique_ptr<DieRoll> dieRollTest1 = make_unique<DieRoll>();
 	//array<int, 6> abilityScores1 = dieRollTest1->generateAbilityScores();
@@ -31,7 +31,7 @@ int main()
 
 	for (int i = 0; i < 5; i++)
 	{
-		srand(static_cast<unsigned int>(std::time(nullptr)));
+		//srand(static_cast<unsigned int>(time(nullptr)));
 		unique_ptr<DieRoll> dieRollTest1 = make_unique<DieRoll>();
 		array<int, 6> abilityScores1 = dieRollTest1->generateAbilityScores();
 		unique_ptr<AbilityScore> scoresTest1 = make_unique<AbilityScore>(abilityScores1);

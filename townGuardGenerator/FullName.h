@@ -22,7 +22,7 @@ public:
 	string getFirstName()
 	{
 		//srand(time(0));
-		srand(static_cast<unsigned int>(std::time(nullptr)));
+		//srand(static_cast<unsigned int>(std::time(nullptr)));
 		int nameSelect = rand() % 50 + 1;
 
 		if (isMale == true)
@@ -47,7 +47,7 @@ public:
 	string getSurname() 
 	{
 		//srand(time(0));
-		srand(static_cast<unsigned int>(std::time(nullptr)));
+		//srand(static_cast<unsigned int>(std::time(nullptr)));
 		int nameSelect = rand() % 38 + 1;
 
 		unique_ptr<Surname> lastName = make_unique<Surname>();
