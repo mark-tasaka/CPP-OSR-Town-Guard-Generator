@@ -4,6 +4,12 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 -----------------
 
 
+
+Update 1.06: 2023-03-16
+
+'Cleaned up' code to make files more 'readable'.
+
+
 Update 1.05: 2023-03-15
 
 Corrected the issues with random generation by correcting the errors with 'seeding' the rand() with 'time'.
