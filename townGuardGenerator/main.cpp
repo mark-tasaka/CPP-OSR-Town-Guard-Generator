@@ -30,7 +30,7 @@ int main()
 		array<int, 6> abilityScores1 = dieRollTest1->generateAbilityScores();
 		unique_ptr<AbilityScore> scoresTest1 = make_unique<AbilityScore>(abilityScores1);
 
-		cout << "Strength: " << scoresTest1->getStrength() << ", Constitution: " << scoresTest1->getConstitution() << ", Dexterity: " << scoresTest1->getDexterity() << ", Intelligence: " << scoresTest1->getIntelligence() << ", Wisdom: " << scoresTest1->getWisdom() << ", Charisma: " << scoresTest1->getCharisma() << endl << endl;
+		cout << "Str: " << scoresTest1->getStrength() << scoresTest1->returnModSign(scoresTest1->getStrengthMod()) << scoresTest1->getStrengthMod() << "), Con: " << scoresTest1->getConstitution() << scoresTest1->returnModSign(scoresTest1->getConstitutionMod()) << scoresTest1->getConstitutionMod() << "), Dex: " << scoresTest1->getDexterity() << scoresTest1->returnModSign(scoresTest1->getDexterityMod()) << scoresTest1->getDexterityMod() << "),  Int: " << scoresTest1->getIntelligence() << scoresTest1->returnModSign(scoresTest1->getIntelligenceMod()) << scoresTest1->getIntelligenceMod() << "),  Wis: " << scoresTest1->getWisdom() << scoresTest1->returnModSign(scoresTest1->getWisdomMod()) << scoresTest1->getWisdomMod() << "),  Char: " << scoresTest1->getCharisma() << scoresTest1->returnModSign(scoresTest1->getCharismaMod()) << scoresTest1->getCharismaMod() << ")"<< endl << endl;
 
 	}
 

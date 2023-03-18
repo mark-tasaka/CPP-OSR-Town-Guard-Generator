@@ -11,15 +11,24 @@ class DieRoll
 public:
 	array<int, 6> generateAbilityScores()
 	{
-		//srand(static_cast<unsigned int>(std::time(nullptr)));
 
 		for (int i = 0; i < 6; i++)
 		{
-			int roll1 = rand() % 6 + 1;
-			int roll2= rand() % 6 + 1;
-			int roll3 = rand() % 6 + 1;
+			int threeDSix = 0;
 
-			int threeDSix = roll1 + roll2 + roll3;
+			if (i == 0)
+			{
+				int roll = rand() % 8 + 1;
+				threeDSix = 10 + roll;
+			}
+			else
+			{
+				int roll1 = rand() % 6 + 1;
+				int roll2 = rand() % 6 + 1;
+				int roll3 = rand() % 6 + 1;
+
+				threeDSix = roll1 + roll2 + roll3;
+			}
 
 			abilityScores[i] = threeDSix;
 		}
