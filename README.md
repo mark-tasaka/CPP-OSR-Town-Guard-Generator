@@ -5,6 +5,11 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 
 
 
+Update 1.07: 2023-03-17
+
+Add functionality which enabled the generation of ability score modifiers for each of the six core ability score, based on each specific ability score.
+
+
 Update 1.06: 2023-03-16
 
 'Cleaned up' code to make files more 'readable'.
