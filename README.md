@@ -4,6 +4,10 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 -----------------
 
 
+Update 1.08: 2023-03-18
+
+Updated the TownGuard files (TownGuard.h & TownGuard.cpp) to incorporation the functionality of the AbilityScore and FullName files.  Used 'smart pointers' to create new Objects as a mean of being managing memory.
+
 
 Update 1.07: 2023-03-17
 
