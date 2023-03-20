@@ -7,6 +7,7 @@
 #include"FullName.h"
 #include "DieRoll.h"
 #include "AbilityScore.h"
+#include "TownGuard.h"
 
 using namespace std;
 
@@ -21,6 +22,29 @@ int main()
 {
 
 	srand(time(0));
+
+	//Testing
+	for (int i = 1; i <= 5; i++)
+	{
+		int patrolSize = rand() % 2 + 4;
+
+		for (int j = 0; j <= patrolSize; j++)
+		{
+			cout << "Patrol No " << i << ":" << endl;
+
+			if (j == 0)
+			{
+
+			}
+			else
+			{
+
+			}
+
+		}
+
+		cout << endl;
+	}
 
 	//Testing
 	for (int i = 0; i < 5; i++)

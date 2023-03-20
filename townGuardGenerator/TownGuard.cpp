@@ -35,8 +35,9 @@ TownGuard::TownGuard(int level, bool isMale)
 
 	unique_ptr<FullName> guardname = make_unique<FullName>(isMale);
 	name = guardname->getFirstName() + " " + guardname->getSurname();
-	sex = guardname->getSex();
-}
+	setSex(guardname->getSex());
+
+};
 
 void TownGuard::setLevel(int level)
 {
@@ -120,15 +121,121 @@ void TownGuard::setArmourClass(int level, int dexMod)
 	{
 		//chain mail & shield
 		//for guards and NCOs
+		armourClass -= 5;
 	}
 	else
 	{
 		//plate mail & shield
 		//for commissioned officers
+		armourClass -= 7;
 	}
 }
 
 int TownGuard::getArmourClass() const
 {
+	return armourClass;
+}
 
+void TownGuard::setWeapons(int level)
+{
+	if (level < 6)
+	{
+		//for guards and NCOs
+		int d4 = rand() % 4 + 1;
+
+		if (d4 == 1)
+		{
+			weapons = "spear, short sword, dagger, light crossbow, bolts";
+		}
+		else if (d4 == 2)
+		{
+			weapons = "longsword, dagger, short bow, arrows";
+		}
+		else if (d4 == 3)
+		{
+			weapons = "polearm (halbred), longsword, dagger";
+		}
+		else
+		{
+			weapons = "longsword, dagger, heavy crossbow, bolts";
+		}
+	}
+	else
+	{
+		//for commissioned officers
+		int d3 = rand() % 3 + 1;
+
+		if (d3 == 1)
+		{
+			weapons = "longsword +1, silver dagger, light crossbow, arrows";
+		}
+		else if (d3 == 2)
+		{
+			weapons = "longsword, dagger + 1, longbow + 1, arrows";
+		}
+		else
+		{
+			weapons = "longsword +2, dagger, shortbow, arrows";
+		}
+
+	}
+}
+
+string TownGuard::getWeapons() const
+{
+	return weapons;
+}
+
+void TownGuard::setSex(string sex)
+{
+	this->sex = sex;
+}
+
+string TownGuard::getSex() const
+{
+	return sex;
+}
+
+void TownGuard::setTHACO(int level, int strengthMod)
+{
+	if (level == 0)
+	{
+		thaco = 20;
+	}
+	else if (level == 1)
+	{
+		thaco = 19;
+	}
+	else if (level == 2)
+	{
+		thaco = 18;
+	}
+	else if (level == 3 || level == 4)
+	{
+		thaco = 17;
+	}
+	else if (level == 5)
+	{
+		thaco = 16;
+	}
+	else if (level == 6)
+	{
+		thaco = 15;
+	}
+	else if (level == 7)
+	{
+		thaco = 14;
+	}
+	else if (level == 8)
+	{
+		thaco = 13;
+	}
+
+	thaco -= strengthMod;
+
+}
+
+int TownGuard::getTHACO() const
+{
+	return thaco;
 }
