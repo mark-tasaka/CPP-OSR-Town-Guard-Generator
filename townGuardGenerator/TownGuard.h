@@ -24,6 +24,36 @@ public:
 	string getSex() const;
 	void setTHACO(int level, int strengthMod);
 	int getTHACO() const;
+	void setName(string name);
+	string getName() const;
+
+	void setStrength(int strength);
+	int getStrength() const;
+	void setConstitution(int constitution);
+	int getConstitution() const;
+	void setDexterity(int dexterity);
+	int getDexterity() const;
+	void setIntelligence(int intelligence);
+	int getIntelligence() const;
+	void setWisdom(int wisdom);
+	int getWisdom() const;
+	void setCharisma(int charisma);
+	int getCharisma() const;
+
+	void setStrengthMod(int strengthMod);
+	int getStrengthMod() const;
+	void setConstitutionMod(int consitutionMod);
+	int getConstitutionMod() const;
+	void setDexterityMod(int dexterityMod);
+	int getDexterityMod() const;
+	void setIntelligenceMod(int intelligenceMod);
+	int getIntelligenceMod() const;
+	void setWisdomMod(int wisdomMod);
+	int getWisdomMod() const;
+	void setCharismaMod(int charismaMod);
+	int getCharismaMod() const;
+	
+	string modifierSign(int mod);
 
 private:
 	int level;
@@ -36,13 +66,13 @@ private:
 	int thaco;
 
 	int strength;
-	int constition;
+	int constitution;
 	int dexterity;
 	int intelligence;
 	int wisdom;
 	int charisma;
 	int strengthMod;
-	int constitionMod;
+	int constitutionMod;
 	int dexterityMod;
 	int intelligenceMod;
 	int wisdomMod;

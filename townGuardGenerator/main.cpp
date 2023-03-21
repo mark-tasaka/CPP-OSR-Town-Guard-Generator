@@ -34,6 +34,27 @@ int main()
 
 			if (j == 0)
 			{
+				bool characterMale;
+				int corporalLevel;
+
+				int sex = rand() % 10;
+				if (sex < 3)
+				{
+					characterMale = true;
+				}
+				else
+				{
+					characterMale = false;
+				}
+
+				int corporalLevelSelect = rand() % 2 + 1;
+
+				unique_ptr<TownGuard> corporal = make_unique<TownGuard>(corporalLevelSelect, characterMale);
+
+				cout << "\t" << corporal->getTitle() << " " << corporal->getName() << ", Patrol Leader" << "Level: " << corporal->getLevel() << ", Human " << corporal->getSex() << endl;
+				cout << "\tAC: " << corporal->getArmourClass() << " HP: " << corporal->getHitPoints() << " (HD: " << corporalLevel + 1 << "d8) THACO: " << corporal->getTHACO() << endl;
+				cout << "\tStr: " << corporal->getStrength() << corporal->modifierSign(corporal->getStrengthMod()) << ") Con: " << corporal->getConstitution() << corporal->modifierSign(corporal->getConstitutionMod()) << ") Dex: " << corporal->getDexterity() << corporal->modifierSign(corporal->getDexterityMod()) << ") Int: " << corporal->getIntelligence() << corporal->modifierSign(corporal->getIntelligenceMod()) << ") Wis: " << endl;
+
 
 			}
 			else

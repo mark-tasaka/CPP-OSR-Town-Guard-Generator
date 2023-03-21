@@ -17,24 +17,24 @@ TownGuard::TownGuard(int level, bool isMale)
 
 	unique_ptr<AbilityScore> abilityscores = make_unique<AbilityScore>(abilityScoreValues);
 
-	strength = abilityscores->getStrength();
-	constition = abilityscores->getConstitution();
-	dexterity = abilityscores->getDexterity();
-	intelligence = abilityscores->getIntelligence();
-	wisdom = abilityscores->getWisdom();
-	charisma = abilityscores->getCharisma();
+	setStrength(abilityscores->getStrength());
+	setConstitution(abilityscores->getConstitution());
+	setDexterity(abilityscores->getDexterity());
+	setIntelligence(abilityscores->getIntelligence());
+	setWisdom(abilityscores->getWisdom());
+	setCharisma(abilityscores->getCharisma());
 
-	strengthMod = abilityscores->getStrengthMod();
-	constitionMod = abilityscores->getConstitutionMod();
-	dexterityMod = abilityscores->getDexterityMod();
-	intelligenceMod = abilityscores->getIntelligenceMod();
-	wisdomMod = abilityscores->getWisdomMod();
-	charismaMod = abilityscores->getCharismaMod();
+	setStrengthMod(abilityscores->getStrengthMod());
+	setConstitutionMod(abilityscores->getConstitutionMod());
+	setDexterityMod(abilityscores->getDexterityMod());
+	setIntelligenceMod(abilityscores->getIntelligenceMod());
+	setWisdomMod(abilityscores->getWisdomMod());
+	setCharismaMod(abilityscores->getCharismaMod());
 
-	setHitPoints(level, constitionMod);
+	setHitPoints(level, abilityscores->getConstitutionMod());
 
 	unique_ptr<FullName> guardname = make_unique<FullName>(isMale);
-	name = guardname->getFirstName() + " " + guardname->getSurname();
+	setName(guardname->getFirstName() + " " + guardname->getSurname());
 	setSex(guardname->getSex());
 
 };
@@ -238,4 +238,151 @@ void TownGuard::setTHACO(int level, int strengthMod)
 int TownGuard::getTHACO() const
 {
 	return thaco;
+}
+
+void TownGuard::setName(string name)
+{
+	this->name = name;
+}
+
+string TownGuard::getName() const
+{
+	return name;
+}
+
+
+void TownGuard::setStrength(int strength)
+{
+	this->strength = strength;
+}
+
+int TownGuard::getStrength() const
+{
+	return strength;
+}
+
+void TownGuard::setConstitution(int constitution)
+{
+	this->constitution = constitution;
+}
+
+int TownGuard::getConstitution() const
+{
+	return constitution;
+}
+
+void TownGuard::setDexterity(int dexterity)
+{
+	this->dexterity = dexterity;
+}
+
+int TownGuard::getDexterity() const
+{
+	return dexterity;
+}
+
+void TownGuard::setIntelligence(int intelligence)
+{
+	this->intelligence = intelligence;
+}
+
+int TownGuard::getIntelligence() const
+{
+	return intelligence;
+}
+
+void TownGuard::setWisdom(int wisdom)
+{
+	this->wisdom = wisdom;
+}
+
+int TownGuard::getWisdom() const
+{
+	return wisdom;
+}
+
+void TownGuard::setCharisma(int charisma)
+{
+	this->charisma = charisma;
+}
+
+int TownGuard::getCharisma() const
+{
+	return charisma;
+}
+
+void TownGuard::setStrengthMod(int strengthMod)
+{
+	this->strengthMod = strengthMod;
+}
+
+int TownGuard::getStrengthMod() const
+{
+	return strengthMod;
+}
+
+void TownGuard::setConstitutionMod(int consitutionMod)
+{
+	this->constitutionMod = consitutionMod;
+}
+
+int TownGuard::getConstitutionMod() const
+{
+	return constitutionMod;
+}
+
+void TownGuard::setDexterityMod(int dexterityMod)
+{
+	this->dexterityMod = dexterityMod;
+}
+
+int TownGuard::getDexterityMod() const
+{
+	return dexterityMod;
+}
+
+void TownGuard::setIntelligenceMod(int intelligenceMod)
+{
+	this->intelligenceMod = intelligenceMod;
+}
+
+int TownGuard::getIntelligenceMod() const
+{
+	return intelligenceMod;
+}
+
+void TownGuard::setWisdomMod(int wisdomMod)
+{
+	this->wisdomMod = wisdomMod;
+}
+
+int TownGuard::getWisdomMod() const
+{
+	return wisdomMod;
+}
+
+void TownGuard::setCharismaMod(int charismaMod)
+{
+	this->charismaMod = charismaMod;
+}
+
+int TownGuard::getCharismaMod() const
+{
+	return charismaMod;
+}
+
+string TownGuard::modifierSign(int mod)
+{
+	string sign;
+
+	if (mod >= 1)
+	{
+		sign = " (+";
+	}
+	else
+	{
+		sign = " (";
+	}
+
+	return sign;
 }
