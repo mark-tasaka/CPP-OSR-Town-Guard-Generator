@@ -3,6 +3,12 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 
 -----------------
 
+
+Update 1.12: 2023-03-22
+
+Implemented testing in main.cpp.
+
+
 Update 1.11: 2023-03-21
 
 Added new functions to TownGuard.h and TownGuard.cpp.  Updated main.cpp.
