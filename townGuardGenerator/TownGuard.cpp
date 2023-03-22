@@ -25,11 +25,11 @@ TownGuard::TownGuard(int level, bool isMale)
 	setCharisma(abilityscores->getCharisma());
 
 	setStrengthMod(abilityscores->getStrengthMod());
-	setConstitutionMod(abilityscores->getConstitutionMod());
-	setDexterityMod(abilityscores->getDexterityMod());
-	setIntelligenceMod(abilityscores->getIntelligenceMod());
-	setWisdomMod(abilityscores->getWisdomMod());
-	setCharismaMod(abilityscores->getCharismaMod());
+	setConstitutionMod(abilityscores->getConstitution());
+	setDexterityMod(abilityscores->getDexterity());
+	setIntelligenceMod(abilityscores->getIntelligence());
+	setWisdomMod(abilityscores->getWisdom());
+	setCharismaMod(abilityscores->getCharisma());
 
 	setHitPoints(level, abilityscores->getConstitutionMod());
 

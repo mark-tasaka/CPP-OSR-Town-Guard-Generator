@@ -30,15 +30,15 @@ int main()
 
 		for (int j = 0; j <= patrolSize; j++)
 		{
-			cout << "Patrol No " << i << ":" << endl;
 
 			if (j == 0)
 			{
+				cout << "Patrol No " << i << ":" << endl << endl;
+
 				bool characterMale;
-				int corporalLevel;
 
 				int sex = rand() % 10;
-				if (sex < 3)
+				if (sex > 3)
 				{
 					characterMale = true;
 				}
@@ -51,14 +51,39 @@ int main()
 
 				unique_ptr<TownGuard> corporal = make_unique<TownGuard>(corporalLevelSelect, characterMale);
 
-				cout << "\t" << corporal->getTitle() << " " << corporal->getName() << ", Patrol Leader" << "Level: " << corporal->getLevel() << ", Human " << corporal->getSex() << endl;
-				cout << "\tAC: " << corporal->getArmourClass() << " HP: " << corporal->getHitPoints() << " (HD: " << corporalLevel + 1 << "d8) THACO: " << corporal->getTHACO() << endl;
-				cout << "\tStr: " << corporal->getStrength() << corporal->modifierSign(corporal->getStrengthMod()) << ") Con: " << corporal->getConstitution() << corporal->modifierSign(corporal->getConstitutionMod()) << ") Dex: " << corporal->getDexterity() << corporal->modifierSign(corporal->getDexterityMod()) << ") Int: " << corporal->getIntelligence() << corporal->modifierSign(corporal->getIntelligenceMod()) << ") Wis: " << endl;
+				cout << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (Patrol Leader) " << "Level: " << corporal->getLevel() << ", Race: Human " << corporal->getSex() << endl;
 
+				cout << "\tAC: " << corporal->getArmourClass() << " HP: " << corporal->getHitPoints() << " (HD: " << corporalLevelSelect + 1 << "d8) THACO: " << corporal->getTHACO() << endl;
+
+				cout << "\tStr: " << corporal->getStrength() << corporal->modifierSign(corporal->getStrengthMod()) << corporal->getStrengthMod() << ") Con: " << corporal->getConstitution() << corporal->modifierSign(corporal->getConstitutionMod()) << corporal->getConstitutionMod() << ") Dex: " << corporal->getDexterity() << corporal->modifierSign(corporal->getDexterityMod()) << corporal->getDexterityMod() << ") Int: " << corporal->getIntelligence() << corporal->modifierSign(corporal->getIntelligenceMod()) << corporal->getIntelligenceMod() << ") Wis: " << corporal->getWisdom() << corporal->modifierSign(corporal->getWisdomMod()) << corporal->getWisdomMod() << ") Cha: " << corporal->getCharisma() << corporal->modifierSign(corporal->getCharismaMod()) << corporal->getCharismaMod() << ")" << endl;
+				
+				cout << "\tWeapons: " << corporal->getWeapons() << endl;
 
 			}
 			else
 			{
+				bool characterMale;
+
+				int sex = rand() % 10;
+				if (sex > 3)
+				{
+					characterMale = true;
+				}
+				else
+				{
+					characterMale = false;
+				}
+				unique_ptr<TownGuard> guard = make_unique<TownGuard>(0, characterMale);
+
+				cout << endl;
+
+				cout << "\t" << guard->getName() << ", " << guard->getTitle() << " (Patrol) " << "Level: " << guard->getLevel() << ", Race: Human " << guard->getSex() << endl;
+
+				cout << "\tAC: " << guard->getArmourClass() << " HP: " << guard->getHitPoints() << " (HD: 1d8) THACO: " << guard->getTHACO() << endl;
+
+				cout << "\tStr: " << guard->getStrength() << guard->modifierSign(guard->getStrengthMod()) << guard->getStrengthMod() << ") Con: " << guard->getConstitution() << guard->modifierSign(guard->getConstitutionMod()) << guard->getConstitutionMod() << ") Dex: " << guard->getDexterity() << guard->modifierSign(guard->getDexterityMod()) << guard->getDexterityMod() << ") Int: " << guard->getIntelligence() << guard->modifierSign(guard->getIntelligenceMod()) << guard->getIntelligenceMod() << ") Wis: " << guard->getWisdom() << guard->modifierSign(guard->getWisdomMod()) << guard->getWisdomMod() << ") Cha: " << guard->getCharisma() << guard->modifierSign(guard->getCharismaMod()) << guard->getCharismaMod() << ")" << endl;
+
+				cout << "\tWeapons: " << guard->getWeapons() << endl;
 
 			}
 
