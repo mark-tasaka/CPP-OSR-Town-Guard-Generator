@@ -25,13 +25,16 @@ TownGuard::TownGuard(int level, bool isMale)
 	setCharisma(abilityscores->getCharisma());
 
 	setStrengthMod(abilityscores->getStrengthMod());
-	setConstitutionMod(abilityscores->getConstitution());
-	setDexterityMod(abilityscores->getDexterity());
-	setIntelligenceMod(abilityscores->getIntelligence());
-	setWisdomMod(abilityscores->getWisdom());
-	setCharismaMod(abilityscores->getCharisma());
+	setConstitutionMod(abilityscores->getConstitutionMod());
+	setDexterityMod(abilityscores->getDexterityMod());
+	setIntelligenceMod(abilityscores->getIntelligenceMod());
+	setWisdomMod(abilityscores->getWisdomMod());
+	setCharismaMod(abilityscores->getCharismaMod());
 
 	setHitPoints(level, abilityscores->getConstitutionMod());
+	setArmourClass(level, abilityscores->getDexterityMod());
+	setTHACO(level, abilityscores->getStrengthMod());
+	setArmour(level);
 
 	unique_ptr<FullName> guardname = make_unique<FullName>(isMale);
 	setName(guardname->getFirstName() + " " + guardname->getSurname());
@@ -89,6 +92,8 @@ string TownGuard::getTitle() const
 
 void TownGuard::setHitPoints(int level, int conMod)
 {
+	hitPoints = 0;
+
 	int hitPointsPerLevel = 0;
 
 	for (int i = 0; i <= level; i++)
@@ -135,6 +140,26 @@ int TownGuard::getArmourClass() const
 {
 	return armourClass;
 }
+
+
+void TownGuard::setArmour(int level)
+{
+	if (level < 6)
+	{
+		armour = "chain mail & shield";
+	}
+	else
+	{
+		armour = "plate mail & shield";
+	}
+
+}
+
+string TownGuard::getArmour() const
+{
+	return armour;
+}
+
 
 void TownGuard::setWeapons(int level)
 {
@@ -198,6 +223,8 @@ string TownGuard::getSex() const
 
 void TownGuard::setTHACO(int level, int strengthMod)
 {
+	thaco = 0;
+
 	if (level == 0)
 	{
 		thaco = 20;

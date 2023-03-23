@@ -18,6 +18,8 @@ public:
 	int getHitPoints() const;
 	void setArmourClass(int level, int dexMod);
 	int getArmourClass() const;
+	void setArmour(int level);
+	string getArmour() const;
 	void setWeapons(int level);
 	string getWeapons() const;
 	void setSex(string sex);
@@ -60,6 +62,7 @@ private:
 	int hitPoints;
 	string title;
 	int armourClass;
+	string armour;
 	string weapons;
 	string name;
 	string sex;

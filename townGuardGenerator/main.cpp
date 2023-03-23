@@ -51,9 +51,9 @@ int main()
 
 				unique_ptr<TownGuard> corporal = make_unique<TownGuard>(corporalLevelSelect, characterMale);
 
-				cout << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (Patrol Leader) " << "Level: " << corporal->getLevel() << ", Race: Human " << corporal->getSex() << endl;
+				cout << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (Patrol Leader); " << "Level: " << corporal->getLevel() << "; Race: Human; Sex: " << corporal->getSex() << endl;
 
-				cout << "\tAC: " << corporal->getArmourClass() << " HP: " << corporal->getHitPoints() << " (HD: " << corporalLevelSelect + 1 << "d8) THACO: " << corporal->getTHACO() << endl;
+				cout << "\tAC: " << corporal->getArmourClass() << " (" << corporal->getArmour() << "); HP: " << corporal->getHitPoints() << " (HD: " << corporalLevelSelect + 1 << "d8); THACO: " << corporal->getTHACO() << endl;
 
 				cout << "\tStr: " << corporal->getStrength() << corporal->modifierSign(corporal->getStrengthMod()) << corporal->getStrengthMod() << ") Con: " << corporal->getConstitution() << corporal->modifierSign(corporal->getConstitutionMod()) << corporal->getConstitutionMod() << ") Dex: " << corporal->getDexterity() << corporal->modifierSign(corporal->getDexterityMod()) << corporal->getDexterityMod() << ") Int: " << corporal->getIntelligence() << corporal->modifierSign(corporal->getIntelligenceMod()) << corporal->getIntelligenceMod() << ") Wis: " << corporal->getWisdom() << corporal->modifierSign(corporal->getWisdomMod()) << corporal->getWisdomMod() << ") Cha: " << corporal->getCharisma() << corporal->modifierSign(corporal->getCharismaMod()) << corporal->getCharismaMod() << ")" << endl;
 				
@@ -77,9 +77,9 @@ int main()
 
 				cout << endl;
 
-				cout << "\t" << guard->getName() << ", " << guard->getTitle() << " (Patrol) " << "Level: " << guard->getLevel() << ", Race: Human " << guard->getSex() << endl;
+				cout << "\t" << guard->getName() << ", " << guard->getTitle() << "; Level: " << guard->getLevel() << "; Race: Human; Sex: " << guard->getSex() << endl;
 
-				cout << "\tAC: " << guard->getArmourClass() << " HP: " << guard->getHitPoints() << " (HD: 1d8) THACO: " << guard->getTHACO() << endl;
+				cout << "\tAC: " << guard->getArmourClass() << " (" << guard->getArmour() << "); HP: " << guard->getHitPoints() << " (HD: 1d8); THACO: " << guard->getTHACO() << endl;
 
 				cout << "\tStr: " << guard->getStrength() << guard->modifierSign(guard->getStrengthMod()) << guard->getStrengthMod() << ") Con: " << guard->getConstitution() << guard->modifierSign(guard->getConstitutionMod()) << guard->getConstitutionMod() << ") Dex: " << guard->getDexterity() << guard->modifierSign(guard->getDexterityMod()) << guard->getDexterityMod() << ") Int: " << guard->getIntelligence() << guard->modifierSign(guard->getIntelligenceMod()) << guard->getIntelligenceMod() << ") Wis: " << guard->getWisdom() << guard->modifierSign(guard->getWisdomMod()) << guard->getWisdomMod() << ") Cha: " << guard->getCharisma() << guard->modifierSign(guard->getCharismaMod()) << guard->getCharismaMod() << ")" << endl;
 
@@ -92,43 +92,43 @@ int main()
 		cout << endl;
 	}
 
-	//Testing
-	for (int i = 0; i < 5; i++)
-	{
-		//srand(static_cast<unsigned int>(time(nullptr)));
-		unique_ptr<DieRoll> dieRollTest1 = make_unique<DieRoll>();
-		array<int, 6> abilityScores1 = dieRollTest1->generateAbilityScores();
-		unique_ptr<AbilityScore> scoresTest1 = make_unique<AbilityScore>(abilityScores1);
+	////Testing
+	//for (int i = 0; i < 5; i++)
+	//{
+	//	//srand(static_cast<unsigned int>(time(nullptr)));
+	//	unique_ptr<DieRoll> dieRollTest1 = make_unique<DieRoll>();
+	//	array<int, 6> abilityScores1 = dieRollTest1->generateAbilityScores();
+	//	unique_ptr<AbilityScore> scoresTest1 = make_unique<AbilityScore>(abilityScores1);
 
-		cout << "Str: " << scoresTest1->getStrength() << scoresTest1->returnModSign(scoresTest1->getStrengthMod()) << scoresTest1->getStrengthMod() << "), Con: " << scoresTest1->getConstitution() << scoresTest1->returnModSign(scoresTest1->getConstitutionMod()) << scoresTest1->getConstitutionMod() << "), Dex: " << scoresTest1->getDexterity() << scoresTest1->returnModSign(scoresTest1->getDexterityMod()) << scoresTest1->getDexterityMod() << "),  Int: " << scoresTest1->getIntelligence() << scoresTest1->returnModSign(scoresTest1->getIntelligenceMod()) << scoresTest1->getIntelligenceMod() << "),  Wis: " << scoresTest1->getWisdom() << scoresTest1->returnModSign(scoresTest1->getWisdomMod()) << scoresTest1->getWisdomMod() << "),  Char: " << scoresTest1->getCharisma() << scoresTest1->returnModSign(scoresTest1->getCharismaMod()) << scoresTest1->getCharismaMod() << ")"<< endl << endl;
+	//	cout << "Str: " << scoresTest1->getStrength() << scoresTest1->returnModSign(scoresTest1->getStrengthMod()) << scoresTest1->getStrengthMod() << "), Con: " << scoresTest1->getConstitution() << scoresTest1->returnModSign(scoresTest1->getConstitutionMod()) << scoresTest1->getConstitutionMod() << "), Dex: " << scoresTest1->getDexterity() << scoresTest1->returnModSign(scoresTest1->getDexterityMod()) << scoresTest1->getDexterityMod() << "),  Int: " << scoresTest1->getIntelligence() << scoresTest1->returnModSign(scoresTest1->getIntelligenceMod()) << scoresTest1->getIntelligenceMod() << "),  Wis: " << scoresTest1->getWisdom() << scoresTest1->returnModSign(scoresTest1->getWisdomMod()) << scoresTest1->getWisdomMod() << "),  Char: " << scoresTest1->getCharisma() << scoresTest1->returnModSign(scoresTest1->getCharismaMod()) << scoresTest1->getCharismaMod() << ")"<< endl << endl;
 
-	}
+	//}
 
-	bool isMale;
-	int sexSelect;
-	int nameCounter = 0;
-
-
-	for (int i = 0; i < 10; i++)
-	{
-
-		sexSelect = rand() % 10;
-
-		if (sexSelect < 5)
-		{
-			isMale = true;
-		}
-		else
-		{
-			isMale = false;
-		}
+	//bool isMale;
+	//int sexSelect;
+	//int nameCounter = 0;
 
 
-		unique_ptr<FullName> test2 = make_unique<FullName>(sexSelect);
+	//for (int i = 0; i < 10; i++)
+	//{
 
-		cout << "First Name: " << test2->getFirstName() << " Last Name: " << test2->getSurname() << " Sex: " << test2->getSex() << endl << endl;
+	//	sexSelect = rand() % 10;
 
-	}
+	//	if (sexSelect < 5)
+	//	{
+	//		isMale = true;
+	//	}
+	//	else
+	//	{
+	//		isMale = false;
+	//	}
+
+
+	//	unique_ptr<FullName> test2 = make_unique<FullName>(sexSelect);
+
+	//	cout << "First Name: " << test2->getFirstName() << " Last Name: " << test2->getSurname() << " Sex: " << test2->getSex() << endl << endl;
+
+	//}
 
 	return 0;
 }
