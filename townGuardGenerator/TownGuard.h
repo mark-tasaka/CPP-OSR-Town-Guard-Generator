@@ -28,6 +28,10 @@ public:
 	int getTHACO() const;
 	void setName(string name);
 	string getName() const;
+	void setAlignment();
+	string getAlignment() const;
+	void setTreasure(int level);
+	string getTreasure() const;
 
 	void setStrength(int strength);
 	int getStrength() const;
@@ -67,6 +71,8 @@ private:
 	string name;
 	string sex;
 	int thaco;
+	string alignment;
+	string treasure;
 
 	int strength;
 	int constitution;

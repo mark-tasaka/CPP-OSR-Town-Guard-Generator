@@ -39,6 +39,9 @@ TownGuard::TownGuard(int level, bool isMale)
 	unique_ptr<FullName> guardname = make_unique<FullName>(isMale);
 	setName(guardname->getFirstName() + " " + guardname->getSurname());
 	setSex(guardname->getSex());
+	setWeapons(level);
+	setAlignment();
+	setTreasure(level);
 
 };
 
@@ -275,6 +278,119 @@ void TownGuard::setName(string name)
 string TownGuard::getName() const
 {
 	return name;
+}
+
+
+void TownGuard::setAlignment()
+{
+	int dieRoll = rand() % 4 + 1;
+
+	if (dieRoll <= 2)
+	{
+		alignment = "L";
+	}
+	else if (dieRoll == 3)
+	{
+		alignment = "N";
+	}
+	else
+	{
+		alignment = "C";
+	}
+}
+
+string TownGuard::getAlignment() const
+{
+	return alignment;
+}
+
+void TownGuard::setTreasure(int level)
+{
+	int silver = 0;
+	int gold = 0;
+	int platinum;
+	int gemstones = 0;
+	int dieRoll = rand() % 6 + 1;
+
+	if (level == 0)
+	{
+		silver = rand() % 24 + 4;
+		gold = rand() % 10 + 2;
+
+		treasure = to_string(silver) + " sp & " + to_string(gold) + " gp";
+	}
+	else if (level == 1 || level == 2)
+	{
+		if (dieRoll < 3)
+		{
+			silver = rand() % 24 + 4;
+			gold = rand() % 20 + 8;
+			gemstones = rand() % 6 + 2;
+
+			treasure = to_string(silver) + " sp, " + to_string(gold) + " gp & " + to_string(gemstones) + " semi-precious gemstones worth 10 gp each";
+		}
+		else
+		{
+			silver = rand() % 24 + 4;
+			gold = rand() % 20 + 8;
+
+			treasure = to_string(silver) + " sp & " + to_string(gold) + " gp";
+		}
+
+	}
+	else if (level >= 3 && level <= 5)
+	{
+		if (dieRoll < 3)
+		{
+			silver = rand() % 24 + 12;
+			gold = rand() % 36 + 12;
+			gemstones = rand() % 6 + 2;
+
+			treasure = to_string(silver) + " sp, " + to_string(gold) + " gp & " + to_string(gemstones) + " gemstones worth 25 gp each";
+		}
+		else
+		{
+			silver = rand() % 24 + 12;
+			gold = rand() % 36 + 12;
+
+			treasure = to_string(silver) + " sp & " + to_string(gold) + " gp";
+		}
+
+	}
+	else if (level == 6 || level == 7)
+	{
+		if (dieRoll < 3)
+		{
+			gold = rand() % 48 + 12;
+			platinum = rand() % 8 + 3;
+			gemstones = rand() % 8 + 5;
+
+			treasure = to_string(gold) + " gp, " + to_string(platinum) + " pp & " + to_string(gemstones) + " gemstones worth 25 gp each";
+		}
+		else
+		{
+			gold = rand() % 48 + 12;
+			platinum = rand() % 8 + 3;
+
+			treasure = to_string(gold) + " gp & " + to_string(gold) + " pp";
+		}
+
+	}
+	else if (level == 8)
+	{
+		gold = rand() % 48 + 12;
+		platinum = rand() % 20 + 8;
+		gemstones = rand() % 8 + 5;
+
+		treasure = to_string(gold) + " gp, " + to_string(platinum) + " pp & " + to_string(gemstones) + " gemstones worth 25 gp each";
+
+	}
+
+}
+
+string TownGuard::getTreasure() const
+{
+	return treasure;
 }
 
 
