@@ -19,7 +19,9 @@ The Town Guard Generator is a C++ project designed to generate a company of town
 */
 
 void runProgram();
+void generatePatrol();
 void generatePatrols();
+void generateSquad();
 
 int main()
 {
@@ -36,50 +38,41 @@ void runProgram()
 {
 	int choice = 0;
 
-	std::cout << "Welcome to the Town Guard Generator.  This program is designed to randomly generate Town Guard for OSR style campaign setting.  The town guard are organized into the following units:" << endl;
+	std::cout << "Welcome to the Town Guard Generator.  This program is designed to randomly generate Town Guard for OSR style campaign setting.  The town guard are organized into the following units:" << endl << endl;
 
-	std::cout << "\tPatrol (3-5): 2-4 level 0 Guards, led by a 1st or 2nd level Corporal." << endl;
+	std::cout << "Patrol (3-5): 2-4 level 0 Guards, led by a 1st or 2nd level Corporal." << endl << endl;
 
-	std::cout << "\tSquad (6-10): 4-8 level 0 Guards, led by a 3rd or 4th level Sergeant and a 1st or 2nd level Corporal." << endl;
+	std::cout << "Squad (6-10): 4-8 level 0 Guards, led by a 3rd or 4th level Sergeant and a 1st or 2nd level Corporal." << endl << endl;
 
-	std::cout << "\tWatch (2-4 Squads & 3-5 Patrols): Each Watch consists of 2-4 squads and 3-5 patrols.  A Watch is commanded by a 6th level Lieutentant and a 5th level Staff-Sergent" << endl;
+	std::cout << "Watch (2-4 Squads & 3-5 Patrols): Each Watch consists of 2-4 squads and 3-5 patrols.  A Watch is commanded by a 6th level Lieutentant and a 5th level Staff-Sergent" << endl << endl;
 
-	std::cout << "\tCompany (4 Watches): A company represents the force Town Guard assigned to each town.  A company is led by a 8th Level Captain.  The second-in-charge of Company is a 7th level Senior Lieutentant.  The Company has a command staff of Non-Commissioned Officers consisting of 1 Staff Sergeant (level 5), 1-3 Sergeants (level 3-4), and 2-4 Corporals (level 1-2)." << endl;
+	std::cout << "Company (4 Watches): A company represents the force Town Guard assigned to each town.  A company is led by a 8th Level Captain.  The second-in-charge of Company is a 7th level Senior Lieutentant.  The Company has a command staff of Non-Commissioned Officers consisting of 1 Staff Sergeant (level 5), 1-3 Sergeants (level 3-4), and 2-4 Corporals (level 1-2)." << endl;
 
 	std::cout << endl << endl;
 
-	std::cout << "Please select on of the following options:" << endl;
+	int repeat = 1;
 
-	std::cout << "\t1. Patrol" << endl;
-
-	std::cout << "\t2. 2-4 Patrols" << endl;
-
-	std::cout << "\t3. Squad" << endl;
-
-	std::cout << "\t4. 2-4 Squads" << endl;
-
-	std::cout << "\t5. Watch" << endl;
-
-	std::cout << "\t6. Company" << endl;
-
-	cin >> choice;
-	cin.get();
-	//checks if integre is entered.
-	//if non-integre is entered, re-ask question.
-	while (cin.fail())
+	do
 	{
-		cin.clear();
-		cin.ignore(256, '\n');
-		std::cout << "An integer was not entered.  Please enter an integer value of either 1, 2, 3, 4, 5, or 6." << endl;
+		std::cout << "Please select on of the following options:" << endl;
+
+		std::cout << "\t1. Patrol" << endl;
+
+		std::cout << "\t2. 2-4 Patrols" << endl;
+
+		std::cout << "\t3. Squad" << endl;
+
+		std::cout << "\t4. 2-4 Squads" << endl;
+
+		std::cout << "\t5. Watch" << endl;
+
+		std::cout << "\t6. Company" << endl << endl;
+
 		cin >> choice;
-		cin.get(); //consume newline
-		std::cout << endl;
-	}
-
-	while (choice < 1 || choice > 6)
-	{
-		//if integer was not entered
-		if (cin.fail())
+		cin.get();
+		//checks if integre is entered.
+		//if non-integre is entered, re-ask question.
+		while (cin.fail())
 		{
 			cin.clear();
 			cin.ignore(256, '\n');
@@ -89,33 +82,145 @@ void runProgram()
 			std::cout << endl;
 		}
 
-		cin.clear();
-		std::cout << "Please enter an integer value of either 1, 2, 3, 4, 5, or 6." << endl;
-		cin >> choice;
-		cin.get(); //consume newline
-		std::cout << endl;
-	}
+		while (choice < 1 || choice > 6)
+		{
+			//if integer was not entered
+			if (cin.fail())
+			{
+				cin.clear();
+				cin.ignore(256, '\n');
+				std::cout << "An integer was not entered.  Please enter an integer value of either 1, 2, 3, 4, 5, or 6." << endl;
+				cin >> choice;
+				cin.get(); //consume newline
+				std::cout << endl;
+			}
 
-	if (choice == 1)
-	{
-		std::cout << "Patrol Generated." << endl;
-	}
-	else if (choice == 2)
-	{
-		generatePatrols();
-	}
-	else
-	{
-		std::cout << "Not Yet Created." << endl;
-	}
+			cin.clear();
+			std::cout << "Please enter an integer value of either 1, 2, 3, 4, 5, or 6." << endl;
+			cin >> choice;
+			cin.get(); //consume newline
+			std::cout << endl;
+		}
+
+		if (choice == 1)
+		{
+			generatePatrol();
+		}
+		else if (choice == 2)
+		{
+			generatePatrols();
+		}
+		else if (choice == 3)
+		{
+			generateSquad();
+		}
+		else
+		{
+			std::cout << "Not Yet Created." << endl;
+		}
+
+		cout << endl;
+
+		cout << "Would you like to generator more town guards.  Please enter 1 to continue, or another number to exit the program." << endl;
+
+		cin >> repeat;
+		cin.get();
+		//checks if integre is entered.
+		//if non-integre is entered, re-ask question.
+		while (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(256, '\n');
+			std::cout << "An integer was not entered.  Please enter an integer value of either 1, 2, 3, 4, 5, or 6." << endl;
+			cin >> choice;
+			cin.get(); //consume newline
+			std::cout << endl;
+		}
+
+	} while (repeat == 1);
+
+
 
 }
 
+//single patrol
+void generatePatrol()
+{
+	int patrolSize = rand() % 2 + 3;
+
+	for (int j = 0; j <= patrolSize; j++)
+	{
+
+		if (j == 0)
+		{
+			std::cout << "Patrol: " << endl << endl;
+
+			bool characterMale;
+
+			int sex = rand() % 10;
+			if (sex > 3)
+			{
+				characterMale = true;
+			}
+			else
+			{
+				characterMale = false;
+			}
+
+			int corporalLevelSelect = rand() % 2 + 1;
+
+			unique_ptr<TownGuard> corporal = make_unique<TownGuard>(corporalLevelSelect, characterMale);
+
+			std::cout << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (Patrol Leader); " << "Level: " << corporal->getLevel() << "; Race: Human; Sex: " << corporal->getSex() << endl;
+
+			std::cout << "\tAC: " << corporal->getArmourClass() << " (" << corporal->getArmour() << "); HP: " << corporal->getHitPoints() << " (HD: " << corporalLevelSelect + 1 << "d8); THACO: " << corporal->getTHACO() << "; Align: " << corporal->getAlignment() << endl;
+
+			std::cout << "\tStr: " << corporal->getStrength() << corporal->modifierSign(corporal->getStrengthMod()) << corporal->getStrengthMod() << ") Con: " << corporal->getConstitution() << corporal->modifierSign(corporal->getConstitutionMod()) << corporal->getConstitutionMod() << ") Dex: " << corporal->getDexterity() << corporal->modifierSign(corporal->getDexterityMod()) << corporal->getDexterityMod() << ") Int: " << corporal->getIntelligence() << corporal->modifierSign(corporal->getIntelligenceMod()) << corporal->getIntelligenceMod() << ") Wis: " << corporal->getWisdom() << corporal->modifierSign(corporal->getWisdomMod()) << corporal->getWisdomMod() << ") Cha: " << corporal->getCharisma() << corporal->modifierSign(corporal->getCharismaMod()) << corporal->getCharismaMod() << ")" << endl;
+
+			std::cout << "\tWeapons: " << corporal->getWeapons() << endl;
+			std::cout << "\tTreasure: " << corporal->getTreasure() << endl;
+
+		}
+		else
+		{
+			bool characterMale;
+
+			int sex = rand() % 10;
+			if (sex > 3)
+			{
+				characterMale = true;
+			}
+			else
+			{
+				characterMale = false;
+			}
+			unique_ptr<TownGuard> guard = make_unique<TownGuard>(0, characterMale);
+
+			std::cout << endl;
+
+			std::cout << "\t" << guard->getName() << ", " << guard->getTitle() << "; Level: " << guard->getLevel() << "; Race: Human; Sex: " << guard->getSex() << endl;
+
+			std::cout << "\tAC: " << guard->getArmourClass() << " (" << guard->getArmour() << "); HP: " << guard->getHitPoints() << " (HD: 1d8); THACO: " << guard->getTHACO() << "; Align: " << guard->getAlignment() << endl;
+
+			std::cout << "\tStr: " << guard->getStrength() << guard->modifierSign(guard->getStrengthMod()) << guard->getStrengthMod() << ") Con: " << guard->getConstitution() << guard->modifierSign(guard->getConstitutionMod()) << guard->getConstitutionMod() << ") Dex: " << guard->getDexterity() << guard->modifierSign(guard->getDexterityMod()) << guard->getDexterityMod() << ") Int: " << guard->getIntelligence() << guard->modifierSign(guard->getIntelligenceMod()) << guard->getIntelligenceMod() << ") Wis: " << guard->getWisdom() << guard->modifierSign(guard->getWisdomMod()) << guard->getWisdomMod() << ") Cha: " << guard->getCharisma() << guard->modifierSign(guard->getCharismaMod()) << guard->getCharismaMod() << ")" << endl;
+
+			std::cout << "\tWeapons: " << guard->getWeapons() << endl;
+			std::cout << "\tTreasure: " << guard->getTreasure() << endl;
+		}
+
+	}
+
+	std::cout << endl;
+
+}
+
+//multiple patrols
 void generatePatrols()
 {
+	int numPatrols = rand() % 2 + 2;
 	std::cout << "" << endl << endl;
 
-	for (int i = 1; i <= 5; i++)
+	for (int i = 1; i <= numPatrols; i++)
 	{
 		int patrolSize = rand() % 3 + 2;
 
@@ -183,5 +288,105 @@ void generatePatrols()
 
 		std::cout << endl;
 	}
+
+}
+
+//single squad
+void generateSquad()
+{
+	int patrolSize = rand() % 4 + 6;
+
+	for (int j = 0; j <= patrolSize; j++)
+	{
+
+		if (j == 0)
+		{
+			std::cout << "Squad: " << endl << endl;
+
+			bool characterMale;
+
+			int sex = rand() % 10;
+			if (sex > 3)
+			{
+				characterMale = true;
+			}
+			else
+			{
+				characterMale = false;
+			}
+
+			int sergeantLevelSelect = rand() % 2 + 3;
+
+			unique_ptr<TownGuard> sergeant = make_unique<TownGuard>(sergeantLevelSelect, characterMale);
+
+			std::cout << endl;
+
+			std::cout << "\t" << sergeant->getName() << ", " << sergeant->getTitle() << " (Squad Leader); " << "Level: " << sergeant->getLevel() << "; Race: Human; Sex: " << sergeant->getSex() << endl;
+
+			std::cout << "\tAC: " << sergeant->getArmourClass() << " (" << sergeant->getArmour() << "); HP: " << sergeant->getHitPoints() << " (HD: " << sergeantLevelSelect + 1 << "d8); THACO: " << sergeant->getTHACO() << "; Align: " << sergeant->getAlignment() << endl;
+
+			std::cout << "\tStr: " << sergeant->getStrength() << sergeant->modifierSign(sergeant->getStrengthMod()) << sergeant->getStrengthMod() << ") Con: " << sergeant->getConstitution() << sergeant->modifierSign(sergeant->getConstitutionMod()) << sergeant->getConstitutionMod() << ") Dex: " << sergeant->getDexterity() << sergeant->modifierSign(sergeant->getDexterityMod()) << sergeant->getDexterityMod() << ") Int: " << sergeant->getIntelligence() << sergeant->modifierSign(sergeant->getIntelligenceMod()) << sergeant->getIntelligenceMod() << ") Wis: " << sergeant->getWisdom() << sergeant->modifierSign(sergeant->getWisdomMod()) << sergeant->getWisdomMod() << ") Cha: " << sergeant->getCharisma() << sergeant->modifierSign(sergeant->getCharismaMod()) << sergeant->getCharismaMod() << ")" << endl;
+
+			std::cout << "\tWeapons: " << sergeant->getWeapons() << endl;
+			std::cout << "\tTreasure: " << sergeant->getTreasure() << endl;
+		}
+		else if (j == 1)
+		{
+			bool characterMale;
+
+			int sex = rand() % 10;
+			if (sex > 3)
+			{
+				characterMale = true;
+			}
+			else
+			{
+				characterMale = false;
+			}
+
+			int corporalLevelSelect = rand() % 2 + 1;
+
+			unique_ptr<TownGuard> corporal = make_unique<TownGuard>(corporalLevelSelect, characterMale);
+
+			std::cout << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (Assistant Squad Leader); " << "Level: " << corporal->getLevel() << "; Race: Human; Sex: " << corporal->getSex() << endl;
+
+			std::cout << "\tAC: " << corporal->getArmourClass() << " (" << corporal->getArmour() << "); HP: " << corporal->getHitPoints() << " (HD: " << corporalLevelSelect + 1 << "d8); THACO: " << corporal->getTHACO() << "; Align: " << corporal->getAlignment() << endl;
+
+			std::cout << "\tStr: " << corporal->getStrength() << corporal->modifierSign(corporal->getStrengthMod()) << corporal->getStrengthMod() << ") Con: " << corporal->getConstitution() << corporal->modifierSign(corporal->getConstitutionMod()) << corporal->getConstitutionMod() << ") Dex: " << corporal->getDexterity() << corporal->modifierSign(corporal->getDexterityMod()) << corporal->getDexterityMod() << ") Int: " << corporal->getIntelligence() << corporal->modifierSign(corporal->getIntelligenceMod()) << corporal->getIntelligenceMod() << ") Wis: " << corporal->getWisdom() << corporal->modifierSign(corporal->getWisdomMod()) << corporal->getWisdomMod() << ") Cha: " << corporal->getCharisma() << corporal->modifierSign(corporal->getCharismaMod()) << corporal->getCharismaMod() << ")" << endl;
+
+			std::cout << "\tWeapons: " << corporal->getWeapons() << endl;
+			std::cout << "\tTreasure: " << corporal->getTreasure() << endl;
+
+		}
+		else
+		{
+			bool characterMale;
+
+			int sex = rand() % 10;
+			if (sex > 3)
+			{
+				characterMale = true;
+			}
+			else
+			{
+				characterMale = false;
+			}
+			unique_ptr<TownGuard> guard = make_unique<TownGuard>(0, characterMale);
+
+			std::cout << endl;
+
+			std::cout << "\t" << guard->getName() << ", " << guard->getTitle() << "; Level: " << guard->getLevel() << "; Race: Human; Sex: " << guard->getSex() << endl;
+
+			std::cout << "\tAC: " << guard->getArmourClass() << " (" << guard->getArmour() << "); HP: " << guard->getHitPoints() << " (HD: 1d8); THACO: " << guard->getTHACO() << "; Align: " << guard->getAlignment() << endl;
+
+			std::cout << "\tStr: " << guard->getStrength() << guard->modifierSign(guard->getStrengthMod()) << guard->getStrengthMod() << ") Con: " << guard->getConstitution() << guard->modifierSign(guard->getConstitutionMod()) << guard->getConstitutionMod() << ") Dex: " << guard->getDexterity() << guard->modifierSign(guard->getDexterityMod()) << guard->getDexterityMod() << ") Int: " << guard->getIntelligence() << guard->modifierSign(guard->getIntelligenceMod()) << guard->getIntelligenceMod() << ") Wis: " << guard->getWisdom() << guard->modifierSign(guard->getWisdomMod()) << guard->getWisdomMod() << ") Cha: " << guard->getCharisma() << guard->modifierSign(guard->getCharismaMod()) << guard->getCharismaMod() << ")" << endl;
+
+			std::cout << "\tWeapons: " << guard->getWeapons() << endl;
+			std::cout << "\tTreasure: " << guard->getTreasure() << endl;
+		}
+
+	}
+
+	std::cout << endl;
 
 }
