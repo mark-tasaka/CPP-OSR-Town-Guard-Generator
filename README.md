@@ -3,6 +3,11 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 
 -----------------
 
+Update 1.18: 2023-03-28
+
+Implemented testing in main.
+
+
 Update 1.17: 2023-03-27
 
 Updated main, and implemented more testing.
