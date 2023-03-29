@@ -23,6 +23,7 @@ void generatePatrol();
 void generatePatrols();
 void generateSquad();
 void generateSquads();
+void generateWatch();
 
 int main()
 {
@@ -44,7 +45,7 @@ void runProgram()
 
 	std::cout << "Squad (6-10): 4-8 level 0 Guards, led by a 3rd or 4th level Sergeant and a 1st or 2nd level Corporal." << endl << endl;
 
-	std::cout << "Watch (2-4 Squads & 3-5 Patrols): Each Watch consists of 2-4 squads and 3-5 patrols.  A Watch is commanded by a 6th level Lieutentant and a 5th level Staff-Sergent" << endl << endl;
+	std::cout << "Watch (2-4 Squads & 2-4 Patrols): Each Watch consists of 2-4 squads and 3-5 patrols.  A Watch is commanded by a 6th level Lieutentant and a 5th level Staff-Sergent" << endl << endl;
 
 	std::cout << "Company (4 Watches): A company represents the force Town Guard assigned to each town.  A company is led by a 8th Level Captain.  The second-in-charge of Company is a 7th level Senior Lieutentant.  The Company has a command staff of Non-Commissioned Officers consisting of 1 Staff Sergeant (level 5), 1-3 Sergeants (level 3-4), and 2-4 Corporals (level 1-2)." << endl;
 
@@ -119,6 +120,10 @@ void runProgram()
 		else if (choice == 4)
 		{
 			generateSquads();
+		}
+		else if (choice == 5)
+		{
+			generateWatch();
 		}
 		else
 		{
@@ -510,4 +515,68 @@ void generateSquads()
 	}
 	std::cout << endl;
 
+}
+
+
+void generateWatch()
+{
+	std::cout << "Watch: " << endl;
+	int lieutentantLevelSelect = 6;
+	bool characterMaleLt;
+
+	int sex = rand() % 10;
+	if (sex > 3)
+	{
+		characterMaleLt = true;
+	}
+	else
+	{
+		characterMaleLt = false;
+	}
+
+
+	unique_ptr<TownGuard> lieutentant = make_unique<TownGuard>(lieutentantLevelSelect, characterMaleLt);
+
+	std::cout << endl;
+
+	std::cout << "\t" << lieutentant->getName() << ", " << lieutentant->getTitle() << " (Watch Commander); " << "Level: " << lieutentant->getLevel() << "; Race: Human; Sex: " << lieutentant->getSex() << endl;
+
+	std::cout << "\tAC: " << lieutentant->getArmourClass() << " (" << lieutentant->getArmour() << "); HP: " << lieutentant->getHitPoints() << " (HD: " << lieutentantLevelSelect + 1 << "d8); THACO: " << lieutentant->getTHACO() << "; Align: " << lieutentant->getAlignment() << endl;
+
+	std::cout << "\tStr: " << lieutentant->getStrength() << lieutentant->modifierSign(lieutentant->getStrengthMod()) << lieutentant->getStrengthMod() << ") Con: " << lieutentant->getConstitution() << lieutentant->modifierSign(lieutentant->getConstitutionMod()) << lieutentant->getConstitutionMod() << ") Dex: " << lieutentant->getDexterity() << lieutentant->modifierSign(lieutentant->getDexterityMod()) << lieutentant->getDexterityMod() << ") Int: " << lieutentant->getIntelligence() << lieutentant->modifierSign(lieutentant->getIntelligenceMod()) << lieutentant->getIntelligenceMod() << ") Wis: " << lieutentant->getWisdom() << lieutentant->modifierSign(lieutentant->getWisdomMod()) << lieutentant->getWisdomMod() << ") Cha: " << lieutentant->getCharisma() << lieutentant->modifierSign(lieutentant->getCharismaMod()) << lieutentant->getCharismaMod() << ")" << endl;
+
+	std::cout << "\tWeapons: " << lieutentant->getWeapons() << endl;
+	std::cout << "\tTreasure: " << lieutentant->getTreasure() << endl << endl;
+
+
+	int staffSgtLevelSelect = 5;
+
+	bool characterMaleSSgt;
+
+	int sex2 = rand() % 10;
+	if (sex2 > 3)
+	{
+		characterMaleSSgt = true;
+	}
+	else
+	{
+		characterMaleSSgt = false;
+	}
+
+
+	unique_ptr<TownGuard> staffSgt = make_unique<TownGuard>(staffSgtLevelSelect, characterMaleSSgt);
+
+	std::cout << endl;
+
+	std::cout << "\t" << staffSgt->getName() << ", " << staffSgt->getTitle() << " (Assistant Watch Commander); " << "Level: " << staffSgt->getLevel() << "; Race: Human; Sex: " << staffSgt->getSex() << endl;
+
+	std::cout << "\tAC: " << staffSgt->getArmourClass() << " (" << staffSgt->getArmour() << "); HP: " << staffSgt->getHitPoints() << " (HD: " << staffSgtLevelSelect + 1 << "d8); THACO: " << staffSgt->getTHACO() << "; Align: " << staffSgt->getAlignment() << endl;
+
+	std::cout << "\tStr: " << staffSgt->getStrength() << staffSgt->modifierSign(staffSgt->getStrengthMod()) << staffSgt->getStrengthMod() << ") Con: " << staffSgt->getConstitution() << staffSgt->modifierSign(staffSgt->getConstitutionMod()) << staffSgt->getConstitutionMod() << ") Dex: " << staffSgt->getDexterity() << staffSgt->modifierSign(staffSgt->getDexterityMod()) << staffSgt->getDexterityMod() << ") Int: " << staffSgt->getIntelligence() << staffSgt->modifierSign(staffSgt->getIntelligenceMod()) << staffSgt->getIntelligenceMod() << ") Wis: " << staffSgt->getWisdom() << staffSgt->modifierSign(staffSgt->getWisdomMod()) << staffSgt->getWisdomMod() << ") Cha: " << staffSgt->getCharisma() << staffSgt->modifierSign(staffSgt->getCharismaMod()) << staffSgt->getCharismaMod() << ")" << endl;
+
+	std::cout << "\tWeapons: " << staffSgt->getWeapons() << endl;
+	std::cout << "\tTreasure: " << staffSgt->getTreasure() << endl << endl;
+
+	generateSquads();
+	generatePatrols();
 }
