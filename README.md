@@ -3,6 +3,12 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 
 -----------------
 
+
+Update 1.19: 2023-04-01
+
+Impletemented more testing in main, allowing the user the option of generating: a patrol, patrols, a squad, squads, watch, and company.
+
+
 Update 1.18: 2023-03-28
 
 Implemented testing in main.
