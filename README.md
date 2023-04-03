@@ -3,6 +3,12 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 
 -----------------
 
+
+Update 1.21: 2023-04-03
+
+Started the process of 'cleaning up' the code in the RunProgram files to make the program run more effeciently.
+
+
 Update 1.20: 2023-04-02
 
 Created files RunProgram.h and RunProgram.cpp to contain unit generation functions.  Cleaned up main.cpp, by moving code to RunProgram files.
