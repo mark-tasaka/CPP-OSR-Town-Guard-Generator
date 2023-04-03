@@ -1,9 +1,7 @@
 #include<iostream>
-#include<string>
 #include<cstdlib>
 #include<ctime>
 #include<memory>
-#include<array>
 #include "RunProgram.h"
 
 using namespace std;

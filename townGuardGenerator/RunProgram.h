@@ -12,6 +12,12 @@ class RunProgram
 {
 public:
 	void runProgram();
+
+	void generateGuard();
+	void generatePartolLeader();
+	void generateSquadLeader();
+	void generateAssistantSquadLeader();
+
 	void generatePatrol();
 	void generatePatrols();
 	void generateSquad();
