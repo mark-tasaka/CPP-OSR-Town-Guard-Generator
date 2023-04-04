@@ -18,10 +18,10 @@ public:
 	void generateSquadLeader();
 	void generateAssistantSquadLeader();
 
-	void generatePatrol();
-	void generatePatrols();
-	void generateSquad();
-	void generateSquads();
+	void generatePatrol(int quantity);
+	void generatePatrols(int quantity);
+	void generateSquad(int quantity);
+	void generateSquads(int quantity);
 	void generateWatch();
 	void generateCompany();
 };

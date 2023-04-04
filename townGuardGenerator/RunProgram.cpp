@@ -79,19 +79,27 @@ void RunProgram::runProgram()
 
 		if (choice == 1)
 		{
-			generatePatrol();
+			std::cout << "Single Patrol Generated" << endl << endl;
+			int numPatrols = 1;
+			generatePatrol(numPatrols);
 		}
 		else if (choice == 2)
 		{
-			generatePatrols();
+			int numPatrols = rand() % 2 + 2;
+			std::cout << "Patrols Generated:" << numPatrols << endl << endl;
+			generatePatrols(numPatrols);
 		}
 		else if (choice == 3)
 		{
-			generateSquad();
+			std::cout << "Single Squad Generated" << endl << endl;
+			int numSquads = 1;
+			generateSquad(numSquads);
 		}
 		else if (choice == 4)
 		{
-			generateSquads();
+			int numSquads = rand() % 2 + 2;
+			std::cout << "Squads Generated:" << numSquads << endl << endl;
+			generateSquads(numSquads);
 		}
 		else if (choice == 5)
 		{
@@ -250,12 +258,15 @@ void RunProgram::generateAssistantSquadLeader()
 
 
 //single patrol
-void RunProgram::generatePatrol()
+void RunProgram::generatePatrol(int quantity)
 {
 	int patrolSize = rand() % 2 + 3;
 	std::cout << endl << endl;
 
-	std::cout << "Patrol: " << endl << endl;
+	if (quantity == 1)
+	{
+		std::cout << "Patrol: " << endl;
+	}
 
 	for (int j = 0; j <= patrolSize; j++)
 	{
@@ -276,15 +287,14 @@ void RunProgram::generatePatrol()
 }
 
 //multiple patrols
-void RunProgram::generatePatrols()
+void RunProgram::generatePatrols(int quantity)
 {
-	int numPatrols = rand() % 2 + 2;
 	std::cout << endl << endl;
 
-	for (int i = 1; i <= numPatrols; i++)
+	for (int i = 1; i <= quantity; i++)
 	{
-
-		generatePatrol();
+		std::cout << "Patrol: " << i << endl;
+		generatePatrol(quantity);
 
 		std::cout << endl;
 	}
@@ -292,11 +302,15 @@ void RunProgram::generatePatrols()
 }
 
 //single squad
-void RunProgram::generateSquad()
+void RunProgram::generateSquad(int quantity)
 {
-	std::cout << "Squad: " << endl;
 
 	int squadSize = rand() % 4 + 6;
+
+	if (quantity == 1)
+	{
+		std::cout << "Squad: " << endl;
+	}
 
 	for (int j = 0; j <= squadSize; j++)
 	{
@@ -322,109 +336,13 @@ void RunProgram::generateSquad()
 }
 
 //generate 2-4 squads
-void RunProgram::generateSquads()
+void RunProgram::generateSquads(int quantity)
 {
-	int numSquads = rand() % 2 + 2;
-	int squadSize = 0;
-	//std::cout << endl << endl;
 
-	for (int i = 1; i <= numSquads; i++)
+	for (int i = 1; i <= quantity; i++)
 	{
-		squadSize = rand() % 4 + 6;
-
-		for (int j = 0; j <= squadSize; j++)
-		{
-
-			if (j == 0)
-			{
-				std::wcout << endl << endl;
-				std::cout << "Squad No. " << i << endl;
-
-				bool characterMale;
-
-				int sex = rand() % 10;
-				if (sex > 3)
-				{
-					characterMale = true;
-				}
-				else
-				{
-					characterMale = false;
-				}
-
-				int sergeantLevelSelect = rand() % 2 + 3;
-
-				unique_ptr<TownGuard> sergeant = make_unique<TownGuard>(sergeantLevelSelect, characterMale);
-
-				std::cout << endl;
-
-				std::cout << "\t" << sergeant->getName() << ", " << sergeant->getTitle() << " (Squad Leader); " << "Level: " << sergeant->getLevel() << "; Race: Human; Sex: " << sergeant->getSex() << endl;
-
-				std::cout << "\tAC: " << sergeant->getArmourClass() << " (" << sergeant->getArmour() << "); HP: " << sergeant->getHitPoints() << " (HD: " << sergeantLevelSelect + 1 << "d8); THACO: " << sergeant->getTHACO() << "; Align: " << sergeant->getAlignment() << endl;
-
-				std::cout << "\tStr: " << sergeant->getStrength() << sergeant->modifierSign(sergeant->getStrengthMod()) << sergeant->getStrengthMod() << ") Con: " << sergeant->getConstitution() << sergeant->modifierSign(sergeant->getConstitutionMod()) << sergeant->getConstitutionMod() << ") Dex: " << sergeant->getDexterity() << sergeant->modifierSign(sergeant->getDexterityMod()) << sergeant->getDexterityMod() << ") Int: " << sergeant->getIntelligence() << sergeant->modifierSign(sergeant->getIntelligenceMod()) << sergeant->getIntelligenceMod() << ") Wis: " << sergeant->getWisdom() << sergeant->modifierSign(sergeant->getWisdomMod()) << sergeant->getWisdomMod() << ") Cha: " << sergeant->getCharisma() << sergeant->modifierSign(sergeant->getCharismaMod()) << sergeant->getCharismaMod() << ")" << endl;
-
-				std::cout << "\tWeapons: " << sergeant->getWeapons() << endl;
-				std::cout << "\tTreasure: " << sergeant->getTreasure() << endl;
-			}
-			else if (j == 1)
-			{
-				bool characterMale;
-
-				int sex = rand() % 10;
-				if (sex > 3)
-				{
-					characterMale = true;
-				}
-				else
-				{
-					characterMale = false;
-				}
-
-				int corporalLevelSelect = rand() % 2 + 1;
-
-				unique_ptr<TownGuard> corporal = make_unique<TownGuard>(corporalLevelSelect, characterMale);
-
-				std::cout << endl;
-
-				std::cout << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (Assistant Squad Leader); " << "Level: " << corporal->getLevel() << "; Race: Human; Sex: " << corporal->getSex() << endl;
-
-				std::cout << "\tAC: " << corporal->getArmourClass() << " (" << corporal->getArmour() << "); HP: " << corporal->getHitPoints() << " (HD: " << corporalLevelSelect + 1 << "d8); THACO: " << corporal->getTHACO() << "; Align: " << corporal->getAlignment() << endl;
-
-				std::cout << "\tStr: " << corporal->getStrength() << corporal->modifierSign(corporal->getStrengthMod()) << corporal->getStrengthMod() << ") Con: " << corporal->getConstitution() << corporal->modifierSign(corporal->getConstitutionMod()) << corporal->getConstitutionMod() << ") Dex: " << corporal->getDexterity() << corporal->modifierSign(corporal->getDexterityMod()) << corporal->getDexterityMod() << ") Int: " << corporal->getIntelligence() << corporal->modifierSign(corporal->getIntelligenceMod()) << corporal->getIntelligenceMod() << ") Wis: " << corporal->getWisdom() << corporal->modifierSign(corporal->getWisdomMod()) << corporal->getWisdomMod() << ") Cha: " << corporal->getCharisma() << corporal->modifierSign(corporal->getCharismaMod()) << corporal->getCharismaMod() << ")" << endl;
-
-				std::cout << "\tWeapons: " << corporal->getWeapons() << endl;
-				std::cout << "\tTreasure: " << corporal->getTreasure() << endl;
-
-			}
-			else
-			{
-				bool characterMale;
-
-				int sex = rand() % 10;
-				if (sex > 3)
-				{
-					characterMale = true;
-				}
-				else
-				{
-					characterMale = false;
-				}
-				unique_ptr<TownGuard> guard = make_unique<TownGuard>(0, characterMale);
-
-				std::cout << endl;
-
-				std::cout << "\t" << guard->getName() << ", " << guard->getTitle() << "; Level: " << guard->getLevel() << "; Race: Human; Sex: " << guard->getSex() << endl;
-
-				std::cout << "\tAC: " << guard->getArmourClass() << " (" << guard->getArmour() << "); HP: " << guard->getHitPoints() << " (HD: 1d8); THACO: " << guard->getTHACO() << "; Align: " << guard->getAlignment() << endl;
-
-				std::cout << "\tStr: " << guard->getStrength() << guard->modifierSign(guard->getStrengthMod()) << guard->getStrengthMod() << ") Con: " << guard->getConstitution() << guard->modifierSign(guard->getConstitutionMod()) << guard->getConstitutionMod() << ") Dex: " << guard->getDexterity() << guard->modifierSign(guard->getDexterityMod()) << guard->getDexterityMod() << ") Int: " << guard->getIntelligence() << guard->modifierSign(guard->getIntelligenceMod()) << guard->getIntelligenceMod() << ") Wis: " << guard->getWisdom() << guard->modifierSign(guard->getWisdomMod()) << guard->getWisdomMod() << ") Cha: " << guard->getCharisma() << guard->modifierSign(guard->getCharismaMod()) << guard->getCharismaMod() << ")" << endl;
-
-				std::cout << "\tWeapons: " << guard->getWeapons() << endl;
-				std::cout << "\tTreasure: " << guard->getTreasure() << endl;
-			}
-		}
-
+		std::cout << "Squad: " << i << endl;
+		generateSquad(quantity);
 	}
 	std::cout << endl;
 
@@ -490,8 +408,10 @@ void RunProgram::generateWatch()
 	std::cout << "\tWeapons: " << staffSgt->getWeapons() << endl;
 	std::cout << "\tTreasure: " << staffSgt->getTreasure() << endl << endl;
 
-	generateSquads();
-	generatePatrols();
+	int numPatrols = rand() % 2 + 2;
+	int numSquads = rand() % 2 + 2;
+	generateSquads(numSquads);
+	generatePatrols(numPatrols);
 }
 
 void RunProgram::generateCompany()
