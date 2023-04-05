@@ -3,6 +3,11 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 
 -----------------
 
+Update 1.23: 2023-04-05
+
+Implelemented the ability to generate external text file for the generation of a single 'patrol'.  Created Override for existing functions to allow for this feature.
+
+
 Update 1.22: 2023-04-04
 
 Did more code 'clean up' making the coding more readable, and improving the output of the program.
