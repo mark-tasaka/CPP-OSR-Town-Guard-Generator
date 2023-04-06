@@ -13,6 +13,7 @@ using namespace std;
 void RunProgram::runProgram()
 {
 	int choice = 0;
+	int printChoice = 0;
 	int fileSequence = 0;
 
 	cout << "Welcome to the Town Guard Generator.  This program is designed to randomly generate Town Guard for OSR style campaign setting.  The town guard are organized into the following units:" << endl << endl;
@@ -85,21 +86,44 @@ void RunProgram::runProgram()
 
 		if (choice == 1)
 		{
-			//generating text file
-			ofstream file;
-			string fileNamePart1 = "Patrol_";
-			string fileNamePart2 = to_string(fileSequence);
-			string fileNamePart3 = ".txt";
-			string outPutFile = fileNamePart1 + fileNamePart2 + fileNamePart3;
+			cout << "Do you wish to create a text file for the generated townguard?  Press 1 for text file." << endl << endl;
+			cin >> printChoice;
+			cin.get(); //consume newline
 
-			file.open(outPutFile);
+			if (printChoice != 1 || cin.fail() )
+			{
+				cout << "Single Patrol Generated" << endl << endl;
+				int numPatrols = 1;
+				generatePatrol(numPatrols);
 
-			cout << "Single Patrol Generated" << endl << endl;
-			int numPatrols = 1;
-			generatePatrol(numPatrols, file);
+				cout << endl;
 
-			cout << endl;
-			cout << "Text file: " << outPutFile << " has been generated." << endl;
+				printChoice = 0;
+			}
+			else
+			{
+				//generating text file
+				ofstream file;
+				string fileNamePart1 = "Patrol_";
+				string fileNamePart2 = to_string(fileSequence);
+				string fileNamePart3 = ".txt";
+				string outPutFile = fileNamePart1 + fileNamePart2 + fileNamePart3;
+
+				file.open(outPutFile);
+
+				cout << "Single Patrol Generated" << endl << endl;
+				int numPatrols = 1;
+				generatePatrol(numPatrols, file);
+
+				cout << endl;
+				cout << "Text file: " << outPutFile << " has been generated." << endl;
+
+				//reset printChoice to 0
+				printChoice = 0;
+
+			}
+
+			
 		}
 		else if (choice == 2)
 		{
