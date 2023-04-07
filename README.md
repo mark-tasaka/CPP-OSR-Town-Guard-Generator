@@ -4,6 +4,10 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 -----------------
 
 
+Update 1.25: 2023-04-07
+
+Created 'override' versions of functions in the RunProgram files (RunProgram.h & RunProgram.cpp).  Added the option of generating a text files for the 'Generate Patrols (multiple patrols)' in RunProgram file.
+
 
 Update 1.24: 2023-04-06
 
