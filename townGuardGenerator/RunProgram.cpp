@@ -170,15 +170,86 @@ void RunProgram::runProgram()
 		}
 		else if (choice == 3)
 		{
-			cout << "Single Squad Generated" << endl << endl;
 			int numSquads = 1;
-			generateSquad(numSquads);
+
+			cout << "Do you wish to create a text file for the generated townguard?  Press 1 for text file." << endl << endl;
+			cin >> printChoice;
+			cin.get(); //consume newline
+
+
+			if (printChoice != 1 || cin.fail())
+			{
+				cout << "Squad Generated" << endl << endl;
+				generateSquad(numSquads);
+
+				cout << endl;
+
+				printChoice = 0;
+			}
+			else
+			{
+				//generating text file
+				ofstream file;
+				string fileNamePart1 = "Squad_";
+				string fileNamePart2 = to_string(fileSequence);
+				string fileNamePart3 = ".txt";
+				string outPutFile = fileNamePart1 + fileNamePart2 + fileNamePart3;
+
+				file.open(outPutFile);
+
+				cout << "Squad Generated" << endl << endl;
+
+				file << "" << setw(40) << "Townguard: Single Squad"<< endl << endl;
+				generateSquad(numSquads, file);
+
+				cout << endl;
+				cout << "Text file: " << outPutFile << " has been generated." << endl;
+
+				//reset printChoice to 0
+				printChoice = 0;
+
+			}
 		}
 		else if (choice == 4)
 		{
+			cout << "Do you wish to create a text file for the generated townguard?  Press 1 for text file." << endl << endl;
+			cin >> printChoice;
+			cin.get(); //consume newline
+
 			int numSquads = rand() % 2 + 2;
-			cout << "Squads Generated:" << numSquads << endl << endl;
-			generateSquads(numSquads);
+
+			if (printChoice != 1 || cin.fail())
+			{
+				cout << "Squads Generated:" << numSquads << endl << endl;
+				generatePatrols(numSquads);
+
+				cout << endl;
+
+				printChoice = 0;
+			}
+			else
+			{
+				//generating text file
+				ofstream file;
+				string fileNamePart1 = "Squads_";
+				string fileNamePart2 = to_string(fileSequence);
+				string fileNamePart3 = ".txt";
+				string outPutFile = fileNamePart1 + fileNamePart2 + fileNamePart3;
+
+				file.open(outPutFile);
+
+				cout << "Squads Generated:" << numSquads << endl << endl;
+
+				file << "" << setw(40) << "Townguard: Squads x " << numSquads << endl << endl;
+				generateSquads(numSquads, file);
+
+				cout << endl;
+				cout << "Text file: " << outPutFile << " has been generated." << endl;
+
+				//reset printChoice to 0
+				printChoice = 0;
+
+			}
 		}
 		else if (choice == 5)
 		{
@@ -627,6 +698,44 @@ void RunProgram::generateSquad(int quantity)
 
 }
 
+//Override generateSquad
+ofstream& RunProgram::generateSquad(int quantity, ofstream& file) 
+{
+
+	int squadSize = rand() % 4 + 6;
+
+	if (quantity == 1)
+	{
+		cout << "Squad: " << endl;
+		file << "Squad: " << endl;
+	}
+
+	for (int j = 0; j <= squadSize; j++)
+	{
+
+		if (j == 0)
+		{
+			generateSquadLeader(file);
+
+		}
+		else if (j == 1)
+		{
+			generateAssistantSquadLeader(file);
+		}
+		else
+		{
+			generateGuard(file);
+		}
+
+	}
+
+	cout << endl;
+	file << endl;
+
+	return file;
+
+}
+
 //generate 2-4 squads
 void RunProgram::generateSquads(int quantity)
 {
@@ -640,6 +749,21 @@ void RunProgram::generateSquads(int quantity)
 
 }
 
+//Overriden function
+ofstream& RunProgram::generateSquads(int quantity, ofstream& file)
+{
+
+	for (int i = 1; i <= quantity; i++)
+	{
+		cout << "Squad: " << i << endl;
+		file << "Squad: " << i << endl;
+		generateSquad(quantity, file);
+	}
+	cout << endl;
+
+	return file;
+
+}
 
 void RunProgram::generateWatch()
 {

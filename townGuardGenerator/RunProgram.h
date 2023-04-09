@@ -34,6 +34,8 @@ public:
 	//Overloaded function
 	ofstream& generatePatrol(int quantity, ofstream& file);
 	ofstream& generatePatrols(int quantity, ofstream& file);
+	ofstream& generateSquad(int quantity, ofstream& file);
+	ofstream& generateSquads(int quantity, ofstream& file);
 
 	void generateWatch();
 	void generateCompany();
