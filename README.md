@@ -3,6 +3,10 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 
 -----------------
 
+Update 1.26: 2023-04-08
+
+Created 'override' functions in RunProgram.h and RunProgram.cpp. 
+
 
 Update 1.25: 2023-04-07
 
