@@ -355,8 +355,8 @@ ofstream& RunProgram::generateGuard(ofstream& file)
 
 }
 
-//Level 1-2 Patrol Leader
-void RunProgram::generatePartolLeader()
+//Level 1-2 Corporate: Patrol Leader, Assistant Squad Leader, Staff Junior NCO
+void RunProgram::generateCorporal(string role)
 {
 	bool characterMale;
 
@@ -374,7 +374,7 @@ void RunProgram::generatePartolLeader()
 
 	unique_ptr<TownGuard> corporal = make_unique<TownGuard>(corporalLevelSelect, characterMale);
 
-	cout << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (Patrol Leader); " << "Level: " << corporal->getLevel() << "; Race: Human; Sex: " << corporal->getSex() << endl;
+	cout << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (" << role << "); " << "Level: " << corporal->getLevel() << "; Race: Human; Sex: " << corporal->getSex() << endl;
 
 	cout << "\tAC: " << corporal->getArmourClass() << " (" << corporal->getArmour() << "); HP: " << corporal->getHitPoints() << " (HD: " << corporalLevelSelect + 1 << "d8); THACO: " << corporal->getTHACO() << "; Align: " << corporal->getAlignment() << endl;
 
@@ -386,8 +386,9 @@ void RunProgram::generatePartolLeader()
 
 }
 
-//Level 1-2 Patrol Leader Overloaded
-ofstream& RunProgram::generatePartolLeader(ofstream& file)
+
+//Overload Level 1-2 Corporate: Patrol Leader, Assistant Squad Leader, Staff Junior NCO
+ofstream& RunProgram::generateCorporal(ofstream& file, string role) 
 {
 	bool characterMale;
 
@@ -405,7 +406,9 @@ ofstream& RunProgram::generatePartolLeader(ofstream& file)
 
 	unique_ptr<TownGuard> corporal = make_unique<TownGuard>(corporalLevelSelect, characterMale);
 
-	cout << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (Patrol Leader); " << "Level: " << corporal->getLevel() << "; Race: Human; Sex: " << corporal->getSex() << endl;
+	cout << endl;
+
+	cout << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (" << role << "); " << "Level: " << corporal->getLevel() << "; Race: Human; Sex: " << corporal->getSex() << endl;
 
 	cout << "\tAC: " << corporal->getArmourClass() << " (" << corporal->getArmour() << "); HP: " << corporal->getHitPoints() << " (HD: " << corporalLevelSelect + 1 << "d8); THACO: " << corporal->getTHACO() << "; Align: " << corporal->getAlignment() << endl;
 
@@ -414,7 +417,9 @@ ofstream& RunProgram::generatePartolLeader(ofstream& file)
 	cout << "\tWeapons: " << corporal->getWeapons() << endl;
 	cout << "\tTreasure: " << corporal->getTreasure() << endl;
 
-	file << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (Patrol Leader); " << "Level: " << corporal->getLevel() << "; Race: Human; Sex: " << corporal->getSex() << endl;
+	file << endl;
+
+	file << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (" << role << "); " << "Level: " << corporal->getLevel() << "; Race: Human; Sex: " << corporal->getSex() << endl;
 
 	file << "\tAC: " << corporal->getArmourClass() << " (" << corporal->getArmour() << "); HP: " << corporal->getHitPoints() << " (HD: " << corporalLevelSelect + 1 << "d8); THACO: " << corporal->getTHACO() << "; Align: " << corporal->getAlignment() << endl;
 
@@ -503,71 +508,6 @@ ofstream& RunProgram::generateSquadLeader(ofstream& file)
 }
 
 
-void RunProgram::generateAssistantSquadLeader()
-{
-	bool characterMale;
-
-	int sex = rand() % 10;
-	if (sex > 3)
-	{
-		characterMale = true;
-	}
-	else
-	{
-		characterMale = false;
-	}
-
-	int corporalLevelSelect = rand() % 2 + 1;
-
-	unique_ptr<TownGuard> corporal = make_unique<TownGuard>(corporalLevelSelect, characterMale);
-
-	cout << endl;
-
-	cout << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (Assistant Squad Leader); " << "Level: " << corporal->getLevel() << "; Race: Human; Sex: " << corporal->getSex() << endl;
-
-	cout << "\tAC: " << corporal->getArmourClass() << " (" << corporal->getArmour() << "); HP: " << corporal->getHitPoints() << " (HD: " << corporalLevelSelect + 1 << "d8); THACO: " << corporal->getTHACO() << "; Align: " << corporal->getAlignment() << endl;
-
-	cout << "\tStr: " << corporal->getStrength() << corporal->modifierSign(corporal->getStrengthMod()) << corporal->getStrengthMod() << ") Con: " << corporal->getConstitution() << corporal->modifierSign(corporal->getConstitutionMod()) << corporal->getConstitutionMod() << ") Dex: " << corporal->getDexterity() << corporal->modifierSign(corporal->getDexterityMod()) << corporal->getDexterityMod() << ") Int: " << corporal->getIntelligence() << corporal->modifierSign(corporal->getIntelligenceMod()) << corporal->getIntelligenceMod() << ") Wis: " << corporal->getWisdom() << corporal->modifierSign(corporal->getWisdomMod()) << corporal->getWisdomMod() << ") Cha: " << corporal->getCharisma() << corporal->modifierSign(corporal->getCharismaMod()) << corporal->getCharismaMod() << ")" << endl;
-
-	cout << "\tWeapons: " << corporal->getWeapons() << endl;
-	cout << "\tTreasure: " << corporal->getTreasure() << endl;
-
-}
-
-
-ofstream& RunProgram::generateAssistantSquadLeader(ofstream& file)
-{
-	bool characterMale;
-
-	int sex = rand() % 10;
-	if (sex > 3)
-	{
-		characterMale = true;
-	}
-	else
-	{
-		characterMale = false;
-	}
-
-	int corporalLevelSelect = rand() % 2 + 1;
-
-	unique_ptr<TownGuard> corporal = make_unique<TownGuard>(corporalLevelSelect, characterMale);
-
-	file << endl;
-
-	file << "\t" << corporal->getName() << ", " << corporal->getTitle() << " (Assistant Squad Leader); " << "Level: " << corporal->getLevel() << "; Race: Human; Sex: " << corporal->getSex() << endl;
-
-	file << "\tAC: " << corporal->getArmourClass() << " (" << corporal->getArmour() << "); HP: " << corporal->getHitPoints() << " (HD: " << corporalLevelSelect + 1 << "d8); THACO: " << corporal->getTHACO() << "; Align: " << corporal->getAlignment() << endl;
-
-	file << "\tStr: " << corporal->getStrength() << corporal->modifierSign(corporal->getStrengthMod()) << corporal->getStrengthMod() << ") Con: " << corporal->getConstitution() << corporal->modifierSign(corporal->getConstitutionMod()) << corporal->getConstitutionMod() << ") Dex: " << corporal->getDexterity() << corporal->modifierSign(corporal->getDexterityMod()) << corporal->getDexterityMod() << ") Int: " << corporal->getIntelligence() << corporal->modifierSign(corporal->getIntelligenceMod()) << corporal->getIntelligenceMod() << ") Wis: " << corporal->getWisdom() << corporal->modifierSign(corporal->getWisdomMod()) << corporal->getWisdomMod() << ") Cha: " << corporal->getCharisma() << corporal->modifierSign(corporal->getCharismaMod()) << corporal->getCharismaMod() << ")" << endl;
-
-	file << "\tWeapons: " << corporal->getWeapons() << endl;
-	file << "\tTreasure: " << corporal->getTreasure() << endl;
-
-	return file;
-
-}
-
 //single patrol
 void RunProgram::generatePatrol(int quantity)
 {
@@ -584,7 +524,7 @@ void RunProgram::generatePatrol(int quantity)
 
 		if (j == 0)
 		{
-			generatePartolLeader();
+			generateCorporal("Patrol Leader");
 		}
 		else
 		{
@@ -615,7 +555,7 @@ ofstream& RunProgram::generatePatrol(int quantity, ofstream& file)
 
 		if (j == 0)
 		{
-			generatePartolLeader(file);
+			generateCorporal(file, "Patrol Leader");
 		}
 		else
 		{
@@ -685,7 +625,7 @@ void RunProgram::generateSquad(int quantity)
 		}
 		else if (j == 1)
 		{
-			generateAssistantSquadLeader();
+			generateCorporal("Assistant Squad Leader");
 		}
 		else
 		{
@@ -720,7 +660,7 @@ ofstream& RunProgram::generateSquad(int quantity, ofstream& file)
 		}
 		else if (j == 1)
 		{
-			generateAssistantSquadLeader(file);
+			generateCorporal(file, "Assistant Squad Leader");
 		}
 		else
 		{

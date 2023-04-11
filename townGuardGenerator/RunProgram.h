@@ -16,15 +16,13 @@ public:
 	void runProgram();
 
 	void generateGuard();
-	void generatePartolLeader();
+	void generateCorporal(string role);
 	void generateSquadLeader();
-	void generateAssistantSquadLeader();
 
 	//overloaded function
 	ofstream& generateGuard(ofstream& file);
-	ofstream& generatePartolLeader(ofstream& file);
+	ofstream& generateCorporal(ofstream& file, string role);
 	ofstream& generateSquadLeader(ofstream& file);
-	ofstream& generateAssistantSquadLeader(ofstream& file);
 
 	void generatePatrol(int quantity);
 	void generatePatrols(int quantity);
