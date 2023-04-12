@@ -18,11 +18,15 @@ public:
 	void generateGuard();
 	void generateCorporal(string role);
 	void generateSergeant(string role);
+	void generateStaffSergeant(string role);
+	void generateLieutenant(string role);
 
 	//overloaded function
 	ofstream& generateGuard(ofstream& file);
 	ofstream& generateCorporal(ofstream& file, string role);
 	ofstream& generateSergeant(ofstream& file, string role);
+	ofstream& generateStaffSergeant(ofstream& file, string role);
+	ofstream& generateLieutenant(ofstream& file, string role);
 
 	void generatePatrol(int quantity);
 	void generatePatrols(int quantity);
