@@ -432,7 +432,8 @@ ofstream& RunProgram::generateCorporal(ofstream& file, string role)
 
 }
 
-void RunProgram::generateSquadLeader()
+
+void RunProgram::generateSergeant(string role)
 {
 	bool characterMale;
 
@@ -452,7 +453,7 @@ void RunProgram::generateSquadLeader()
 
 	cout << endl;
 
-	cout << "\t" << sergeant->getName() << ", " << sergeant->getTitle() << " (Squad Leader); " << "Level: " << sergeant->getLevel() << "; Race: Human; Sex: " << sergeant->getSex() << endl;
+	cout << "\t" << sergeant->getName() << ", " << sergeant->getTitle() << " (" << role << "); " << "Level: " << sergeant->getLevel() << "; Race: Human; Sex: " << sergeant->getSex() << endl;
 
 	cout << "\tAC: " << sergeant->getArmourClass() << " (" << sergeant->getArmour() << "); HP: " << sergeant->getHitPoints() << " (HD: " << sergeantLevelSelect + 1 << "d8); THACO: " << sergeant->getTHACO() << "; Align: " << sergeant->getAlignment() << endl;
 
@@ -463,7 +464,8 @@ void RunProgram::generateSquadLeader()
 
 }
 
-ofstream& RunProgram::generateSquadLeader(ofstream& file)
+
+ofstream& RunProgram::generateSergeant(ofstream& file, string role)
 {
 	bool characterMale;
 
@@ -483,7 +485,7 @@ ofstream& RunProgram::generateSquadLeader(ofstream& file)
 
 	cout << endl;
 
-	cout << "\t" << sergeant->getName() << ", " << sergeant->getTitle() << " (Squad Leader); " << "Level: " << sergeant->getLevel() << "; Race: Human; Sex: " << sergeant->getSex() << endl;
+	cout << "\t" << sergeant->getName() << ", " << sergeant->getTitle() << " (" << role << "); " << "Level: " << sergeant->getLevel() << "; Race: Human; Sex: " << sergeant->getSex() << endl;
 
 	cout << "\tAC: " << sergeant->getArmourClass() << " (" << sergeant->getArmour() << "); HP: " << sergeant->getHitPoints() << " (HD: " << sergeantLevelSelect + 1 << "d8); THACO: " << sergeant->getTHACO() << "; Align: " << sergeant->getAlignment() << endl;
 
@@ -494,7 +496,7 @@ ofstream& RunProgram::generateSquadLeader(ofstream& file)
 
 	file << endl;
 
-	file << "\t" << sergeant->getName() << ", " << sergeant->getTitle() << " (Squad Leader); " << "Level: " << sergeant->getLevel() << "; Race: Human; Sex: " << sergeant->getSex() << endl;
+	file << "\t" << sergeant->getName() << ", " << sergeant->getTitle() << " (" << role << "); " << "Level: " << sergeant->getLevel() << "; Race: Human; Sex: " << sergeant->getSex() << endl;
 
 	file << "\tAC: " << sergeant->getArmourClass() << " (" << sergeant->getArmour() << "); HP: " << sergeant->getHitPoints() << " (HD: " << sergeantLevelSelect + 1 << "d8); THACO: " << sergeant->getTHACO() << "; Align: " << sergeant->getAlignment() << endl;
 
@@ -504,9 +506,7 @@ ofstream& RunProgram::generateSquadLeader(ofstream& file)
 	file << "\tTreasure: " << sergeant->getTreasure() << endl;
 
 	return file;
-
 }
-
 
 //single patrol
 void RunProgram::generatePatrol(int quantity)
@@ -620,7 +620,7 @@ void RunProgram::generateSquad(int quantity)
 
 		if (j == 0)
 		{
-			generateSquadLeader();
+			generateSergeant("Squad Leader");
 
 		}
 		else if (j == 1)
@@ -655,7 +655,7 @@ ofstream& RunProgram::generateSquad(int quantity, ofstream& file)
 
 		if (j == 0)
 		{
-			generateSquadLeader(file);
+			generateSergeant(file, "Squad Leader");
 
 		}
 		else if (j == 1)
@@ -864,32 +864,7 @@ void RunProgram::generateCompany()
 
 	for (int i = 0; i < sergentsNum; i++)
 	{
-		bool characterMale;
-
-		int sex = rand() % 10;
-		if (sex > 3)
-		{
-			characterMale = true;
-		}
-		else
-		{
-			characterMale = false;
-		}
-
-		int sergeantLevelSelect = rand() % 2 + 3;
-
-		unique_ptr<TownGuard> sergeant = make_unique<TownGuard>(sergeantLevelSelect, characterMale);
-
-		cout << endl;
-
-		cout << "\t" << sergeant->getName() << ", " << sergeant->getTitle() << " (Command Staff NCO); " << "Level: " << sergeant->getLevel() << "; Race: Human; Sex: " << sergeant->getSex() << endl;
-
-		cout << "\tAC: " << sergeant->getArmourClass() << " (" << sergeant->getArmour() << "); HP: " << sergeant->getHitPoints() << " (HD: " << sergeantLevelSelect + 1 << "d8); THACO: " << sergeant->getTHACO() << "; Align: " << sergeant->getAlignment() << endl;
-
-		cout << "\tStr: " << sergeant->getStrength() << sergeant->modifierSign(sergeant->getStrengthMod()) << sergeant->getStrengthMod() << ") Con: " << sergeant->getConstitution() << sergeant->modifierSign(sergeant->getConstitutionMod()) << sergeant->getConstitutionMod() << ") Dex: " << sergeant->getDexterity() << sergeant->modifierSign(sergeant->getDexterityMod()) << sergeant->getDexterityMod() << ") Int: " << sergeant->getIntelligence() << sergeant->modifierSign(sergeant->getIntelligenceMod()) << sergeant->getIntelligenceMod() << ") Wis: " << sergeant->getWisdom() << sergeant->modifierSign(sergeant->getWisdomMod()) << sergeant->getWisdomMod() << ") Cha: " << sergeant->getCharisma() << sergeant->modifierSign(sergeant->getCharismaMod()) << sergeant->getCharismaMod() << ")" << endl;
-
-		cout << "\tWeapons: " << sergeant->getWeapons() << endl;
-		cout << "\tTreasure: " << sergeant->getTreasure() << endl;
+		generateSergeant("Command Staff NCO");
 	}
 
 	int corporalNum = rand() % 3 + 2;
