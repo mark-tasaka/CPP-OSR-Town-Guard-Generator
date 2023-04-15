@@ -3,6 +3,12 @@ D20 role-playing game system.  Each town guard will have unique individual stast
 
 -----------------
 
+
+Update 1.31: 2023-04-14
+
+Created options for creating text file for the generation of a townguard Watch and Company.
+
+
 Update 1.30: 2023-04-13
 
 Created two new functions and two override functions in the RunProgram files (RunProgram.h & RunProgram.cpp) to improve code efficiency.
