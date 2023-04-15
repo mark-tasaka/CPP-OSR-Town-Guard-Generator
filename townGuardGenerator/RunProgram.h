@@ -36,15 +36,17 @@ public:
 	void generatePatrols(int quantity);
 	void generateSquad(int quantity);
 	void generateSquads(int quantity);
+	void generateWatch(int quantity);
+	void generateCompany();
 
 	//Overloaded function
 	ofstream& generatePatrol(int quantity, ofstream& file);
 	ofstream& generatePatrols(int quantity, ofstream& file);
 	ofstream& generateSquad(int quantity, ofstream& file);
 	ofstream& generateSquads(int quantity, ofstream& file);
+	ofstream& generateWatch(int quantity, ofstream& file);
+	ofstream& generateCompany(ofstream& file);
 
-	void generateWatch();
-	void generateCompany();
 };
 
 #endif // !RUN_PROGRAM_H

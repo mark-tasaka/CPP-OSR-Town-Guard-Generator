@@ -253,11 +253,81 @@ void RunProgram::runProgram()
 		}
 		else if (choice == 5)
 		{
-			generateWatch();
+			cout << "Do you wish to create a text file for the generated townguard?  Press 1 for text file." << endl << endl;
+			cin >> printChoice;
+			cin.get(); //consume newline
+
+			if (printChoice != 1 || cin.fail())
+			{
+				cout << "Watch Generated" << endl << endl;
+				generateWatch(1);
+
+				cout << endl;
+
+				printChoice = 0;
+			}
+			else
+			{
+				//generating text file
+				ofstream file;
+				string fileNamePart1 = "Watch_";
+				string fileNamePart2 = to_string(fileSequence);
+				string fileNamePart3 = ".txt";
+				string outPutFile = fileNamePart1 + fileNamePart2 + fileNamePart3;
+
+				file.open(outPutFile);
+
+				cout << "Watch Generated:" << endl << endl;
+
+				file << "" << setw(40) << "Townguard: Watch " << endl << endl;
+				generateWatch(1, file);
+
+				cout << endl;
+				cout << "Text file: " << outPutFile << " has been generated." << endl;
+
+				//reset printChoice to 0
+				printChoice = 0;
+
+			}
 		}
 		else if (choice == 6)
 		{
+		cout << "Do you wish to create a text file for the generated townguard?  Press 1 for text file." << endl << endl;
+		cin >> printChoice;
+		cin.get(); //consume newline
+
+		if (printChoice != 1 || cin.fail())
+		{
+			cout << "Company Generated" << endl << endl;
 			generateCompany();
+
+			cout << endl;
+
+			printChoice = 0;
+		}
+		else
+		{
+			//generating text file
+			ofstream file;
+			string fileNamePart1 = "Company_";
+			string fileNamePart2 = to_string(fileSequence);
+			string fileNamePart3 = ".txt";
+			string outPutFile = fileNamePart1 + fileNamePart2 + fileNamePart3;
+
+			file.open(outPutFile);
+
+			cout << "Company Generated:" << endl << endl;
+
+			file << "" << setw(40) << "Townguard: Company " << endl << endl;
+			generateCompany(file);
+
+			cout << endl;
+			cout << "Text file: " << outPutFile << " has been generated." << endl;
+
+			//reset printChoice to 0
+			printChoice = 0;
+
+		}
 		}
 
 		cout << endl;
@@ -1010,9 +1080,12 @@ ofstream& RunProgram::generateSquads(int quantity, ofstream& file)
 
 }
 
-void RunProgram::generateWatch()
+void RunProgram::generateWatch(int quantity)
 {
-	cout << "Watch: " << endl;
+	if (quantity == 1)
+	{
+		cout << "Watch: " << endl;
+	}
 
 	generateLieutenant("Watch Commander");
 
@@ -1023,6 +1096,28 @@ void RunProgram::generateWatch()
 
 	generateSquads(numSquads);
 	generatePatrols(numPatrols);
+}
+
+//override function
+ofstream& RunProgram::generateWatch(int quantity, ofstream& file)
+{
+	if (quantity == 1)
+	{
+		cout << "Watch: " << endl;
+		file << "Watch: " << endl;
+	}
+
+	generateLieutenant(file, "Watch Commander");
+
+	generateStaffSergeant(file, "Senior Watch NCO");
+
+	int numPatrols = rand() % 2 + 2;
+	int numSquads = rand() % 2 + 2;
+
+	generateSquads(numSquads, file);
+	generatePatrols(numPatrols, file);
+
+	return file;
 }
 
 void RunProgram::generateCompany()
@@ -1053,10 +1148,57 @@ void RunProgram::generateCompany()
 
 	cout << endl;
 
+	int watchNum = 1;
 	for (int i = 0; i < 4; i++)
 	{
-		generateWatch();
+		cout << "Watch " << watchNum << ":" << endl << endl;
+		generateWatch(4);
+		watchNum += 1;
 	}
 
+}
 
+//override function
+ofstream& RunProgram::generateCompany(ofstream& file)
+{
+	cout << "Company: " << endl;
+	file << "Company: " << endl;
+
+	generateCaptain(file, "Company Commander");
+
+	generateSeniorLieutenant(file, "Deputy Company Commander");
+
+	cout << "Command Staff:" << endl;
+	file << "Command Staff:" << endl;
+
+	generateStaffSergeant(file, "Command Staff Leader");
+
+	int sergentsNum = rand() % 3 + 1;
+
+	for (int i = 0; i < sergentsNum; i++)
+	{
+		generateSergeant(file, "Command Staff NCO");
+	}
+
+	int corporalNum = rand() % 3 + 2;
+
+	for (int i = 0; i < corporalNum; i++)
+	{
+		generateCorporal(file, "Junior Command Staff NCO");
+	}
+
+	cout << endl;
+	file << endl;
+
+
+	int watchNum = 1;
+	for (int i = 0; i < 4; i++)
+	{
+		cout << "Watch " << watchNum << ":" << endl << endl;
+		file << "Watch " << watchNum << ":" << endl << endl;
+		generateWatch(4, file);
+		watchNum += 1;
+	}
+
+	return file;
 }
